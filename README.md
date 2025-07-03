@@ -46,7 +46,7 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 🔸 Cd into the server directory <br>
 
-🔸 cd into server and create a .env file
+🔸 Create a .env file
 
   The .env file should look like this
 ```
