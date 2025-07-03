@@ -14,7 +14,7 @@
 
 ## Project Overview:
 
-This is a Spotify Web API application that allows users to search for artists, albums, and tracks. The app displays search results, and when a result is clicked, the user is redirected to the Spotify player. A user must have a Spotify account. If a user passes the JWT authorization, by having a JWT token, they will be taken to the search page right away , otherwise they will need to login to authorize thier spotify account.  
+This is a Spotify Web API application that allows users to search for artists, albums, and tracks. The app displays search results, and when a result is clicked, the user is redirected to the Spotify player. A user must have a Spotify account. If a user passes the JWT authorization, by having a JWT token, they will be taken to the search page right away, otherwise they will need to login to authorize their Spotify account with a new Token or Token refresh.  
 
 <br>
 
@@ -99,7 +99,7 @@ SPOTIFY_API_KEY=your_api_key
 
 ## Links: 
 
-### Sever:
+### Server:
 
 - `PORT=3000`
 
@@ -107,16 +107,19 @@ SPOTIFY_API_KEY=your_api_key
 
 ### API Users Endpoints
 - `GET /api/users` - Get all users
-- `GET /api/users:id` - Get user by ID
+- `GET /api/users/:id` - Get user by ID
 - `POST /api/users` - Create a new user
-- `PUT /api/users:id` - Update a user by ID
+- `PUT /api/users/:id` - Update a user by ID
 - `DELETE /api/users/:id` - Delete a user by ID
 
 ### API Spotify Endpoints
 
-- Artist
-- Album
-- Track
+- `GET /api/spotify/search/artist/:query` - Search for artists
+- `GET /api/spotify/search/album/:query` - Search for albums  
+- `GET /api/spotify/search/track/:query` - Search for tracks
+- `GET /api/spotify/artist/:id` - Get artist details
+- `GET /api/spotify/album/:id` - Get album details
+- `GET /api/spotify/track/:id` - Get track details
 
 
 ### Database Fields:
