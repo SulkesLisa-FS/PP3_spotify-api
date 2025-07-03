@@ -44,7 +44,7 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 🔸 Make sure your MongoDB is up and running
 
-🔸 Cd into the server directory <br>
+🔸 Cd into the pp3_spotify-api directory <br>
 
 🔸 Create a .env file
 
