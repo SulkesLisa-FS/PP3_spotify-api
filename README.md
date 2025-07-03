@@ -40,9 +40,43 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 # Getting Started:
 
-### Cd into the Spotify-app directory
+🔸 Download zip file and open <br>
+
+🔸 Make sure your MongoDB is up and running
+
+🔸 Cd into the server directory <br>
+
+🔸 cd into server and create a .env file
+
+  The .env file should look like this
+```
+# localhost
+PORT=3000
+
+# MongoDB 
+MONGODB_URI = mongodb://127.0.0.1:27017/Spotify-api
+
+# Spotify API
+SPOTIFY_API_KEY=your_api_key
+```
+- Add your own Spotify API key
+
+
+## Install
+
+    npm install
+
+## Run
+
+    npm run dev
+
+
 
 <br>
+
+# Next:
+
+🔸 Cd into the client directory <br>
 
 ## Install
 
@@ -56,7 +90,7 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 <br>
 
-## Stop the Application:
+## Stop the Applications:
 
     Ctrl + C
 
@@ -80,37 +114,25 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 ### API Spotify Endpoints
 
-- `/artists`
-- `/artists/id`
-- `/artists/id/albums`
-- `/artists/id/tracks`
-
 - Artist
 - Album
 - Track
 
-### MondoDB
-
-- MONGODB_URI = mongodb://127.0.1/27017:Spotify-api_0725
 
 ### Database Fields:
 
 - User Id
 - Access Token
-- Refresh Token
+- Expires Date
 - JWT Token
 
 
 ### Client 
 
-- `http://localhost:3000/login` 
-- `http://localhost:3000/login/api/auth`
-- `http://localhost:3000/` 
-
-
-
-<br>
-
+- `http://localhost:3001/users/login` 
+- `http://localhost:3001/users/login/api/auth`
+- `http://localhost:3001/users`
+- `http://localhost:3001/` 
 
 
 <br>
