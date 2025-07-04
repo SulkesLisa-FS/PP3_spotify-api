@@ -105,21 +105,16 @@ SPOTIFY_API_KEY=your_api_key
 
   -  `http://localhost:3000/api/v1`
 
-### API Users Endpoints
-- `GET /api/users` - Get all users
-- `GET /api/users/:id` - Get user by ID
-- `POST /api/users` - Create a new user
-- `PUT /api/users/:id` - Update a user by ID
-- `DELETE /api/users/:id` - Delete a user by ID
+
 
 ### API Spotify Endpoints
 
-- `GET /api/spotify/search/artist/:query` - Search for artists
-- `GET /api/spotify/search/album/:query` - Search for albums  
-- `GET /api/spotify/search/track/:query` - Search for tracks
-- `GET /api/spotify/artist/:id` - Get artist details
-- `GET /api/spotify/album/:id` - Get album details
-- `GET /api/spotify/track/:id` - Get track details
+- ` /api/spotify/search/artist/:query` - Search for artists
+- ` /api/spotify/search/album/:query` - Search for albums  
+- ` /api/spotify/search/track/:query` - Search for tracks
+- ` /api/spotify/artist/:id` - Get artist details
+- ` /api/spotify/album/:id` - Get album details
+- ` /api/spotify/track/:id` - Get track details
 
 
 ### Database Fields:
@@ -127,7 +122,7 @@ SPOTIFY_API_KEY=your_api_key
 - User Id
 - Access Token
 - Expires Date
-- JWT Token
+
 
 
 ### Client 
