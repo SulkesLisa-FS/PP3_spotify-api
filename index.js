@@ -13,7 +13,7 @@ const app = express()
 
 
 /// Import the database
-const connectDB = require("./app/db/config");
+const connectDB = require("./db/config");
 // Run the  database (MongoDB) asynchronous function
 connectDB();
 
