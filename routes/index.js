@@ -2,17 +2,12 @@
 const express = require("express");
 const router = express.Router();
 
-
 // Import Spotify Module
-
-
 
 // Actions:
 // Login
 // Auth
 // Search
-
-
 
 // Router Use (Endpoint Routes)
 //router.use("/endpoint, routesVariable");
@@ -25,7 +20,6 @@ const router = express.Router();
 //     message: ` ${req.method} - Request made`,
 //   });
 // });
-
 
 // export the router
 // module.exports = router;
