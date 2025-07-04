@@ -107,7 +107,7 @@ SPOTIFY_API_KEY=your_api_key
 
 
 
-### API Spotify Endpoints
+### API Spotify Placeholder Endpoints
 
 - ` /api/spotify/search/artist/:query` - Search for artists
 - ` /api/spotify/search/album/:query` - Search for albums  
