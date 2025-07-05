@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest --coverage",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
