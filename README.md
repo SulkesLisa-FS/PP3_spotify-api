@@ -118,9 +118,8 @@ SPOTIFY_API_KEY=your_api_key
 
 ### Client
 
-- `http://localhost:3001/users/login`
-- `http://localhost:3001/users/login/api/auth`
-- `http://localhost:3001/users`
+- `http://localhost:3001/login`
+- `http://localhost:3001/auth`
 - `http://localhost:3001/`
 
 <br>
