@@ -95,33 +95,22 @@ SPOTIFY_API_KEY=your_api_key
 
 ## Links:
 
-### Server:
+### Local Development:
 
-- `PORT=3000`
+- **Server**: `http://localhost:3000`
+- **Database**: `mongodb://localhost:27017/spotify-app`
 
-  - `http://localhost:3000/api/v1`
+### Planned API Endpoints:
 
-### API Spotify Placeholder Endpoints
+- `/auth/login` - Spotify login
+- `/api/spotify/search/artist/:query` - Search artists
+- `/api/spotify/search/album/:query` - Search albums
+- `/api/spotify/search/track/:query` - Search tracks
 
-- ` /api/spotify/search/artist/:query` - Search for artists
-- ` /api/spotify/search/album/:query` - Search for albums
-- ` /api/spotify/search/track/:query` - Search for tracks
-- ` /api/spotify/artist/:id` - Get artist details
-- ` /api/spotify/album/:id` - Get album details
-- ` /api/spotify/track/:id` - Get track details
+### External:
 
-### Database Fields:
-
-- User Id
-- Access Token
-- Expires Date
-
-### Client
-
-- `http://localhost:3001/users/login`
-- `http://localhost:3001/users/login/api/auth`
-- `http://localhost:3001/users`
-- `http://localhost:3001/`
+- **Spotify API**: `https://api.spotify.com/v1/`
+- **Spotify Dashboard**: `https://developer.spotify.com/dashboard`
 
 <br>
 <br>
