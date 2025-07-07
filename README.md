@@ -103,14 +103,12 @@ SPOTIFY_API_KEY=your_api_key
 ### Planned API Endpoints:
 
 - `/auth/login` - Spotify login
+- `/auth/callback` - Spotify OAuth callback
 - `/api/spotify/search/artist/:query` - Search artists
 - `/api/spotify/search/album/:query` - Search albums
 - `/api/spotify/search/track/:query` - Search tracks
 
-### External:
 
-- **Spotify API**: `https://api.spotify.com/v1/`
-- **Spotify Dashboard**: `https://developer.spotify.com/dashboard`
 
 <br>
 <br>
