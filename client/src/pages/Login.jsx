@@ -1,25 +1,27 @@
 import "../App.css";
-import { Link } from "react-router-dom";
 import { Box, Text } from "@chakra-ui/react";
 
-function LogIn() {
-
+// Login Page
+function Login() {
+  
   return (
     <Box
       as="div"
-      minHeight="100vh"
+      minHeight={"100vh"}
       width="95%"
-      maxWidth="400px"
+      maxWidth="1300px"
       margin="0 auto"
       textAlign="center"
       py={8}
     >
-      <Text as="h2" color="#112236" fontWeight="600" fontSize="2rem" mb={4}>
-        Log In 
+      <Text as="h2" color="#112236" fontWeight="600" fontSize="3rem" mb={4}>
+       Login Page
       </Text>
 
-     </Box>
+
+     
+    </Box>
   );
 }
 
-export default LogIn;
+export default Login;

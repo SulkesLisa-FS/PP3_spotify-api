@@ -2,7 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 // IMPORT PAGES
-import HomePage from "../pages/Home";
+import LoginPage from "../pages/Login";
 import SearchPage from "../pages/Search";
 
 
@@ -41,7 +41,7 @@ function UserRoutes({ currentUser }) {
        {/* Search page as main landing */}
        <Route path="/" element={<SearchPage />} />
        {/* Login page */}
-       <Route path="/login" element={<HomePage />} />
+       <Route path="/login" element={<LoginPage />} />
        {/* Spotify OAuth callback route - will add when ready */}
        {/* <Route path="/auth/callback" element={<CallbackPage />} /> */}
      </Routes>
