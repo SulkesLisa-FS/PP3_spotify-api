@@ -40,11 +40,10 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 🔸 Make sure your MongoDB is up and running
 
-🔸 Cd into the pp3_spotify-api directory <br>
+🔸 Cd into the server directory <br>
 
-🔸 Revert the .env.dist file into a .env file and add your values.
+🔸 Revert the .env.dist file into a .env file and add your values and keys.
 
-**Module One Note: Will set up localhost and MongoDB variables**
 
 The .env file should look something like this
 
@@ -61,31 +60,22 @@ SPOTIFY_API_KEY=your_api_key
 
 - Add your own Spotify API key
 
+
+🔸 Cd into the pp3_spotify-api directory <br>
+
 ## Install
 
-    npm install
-
-## Run
-
-    npm run dev
-
-<br>
+    npm run install-client 
+    npm run install-server 
 
 # Next:
 
-🔸 Cd into the client directory <br>
+## Run
 
-## Install
-
-    npm install
+    npm run dev:react
 
 <br>
 
-## Run the Application:
-
-    npm start
-
-<br>
 
 ## Stop the Applications:
 
