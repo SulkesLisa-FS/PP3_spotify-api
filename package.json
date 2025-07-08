@@ -1,0 +1,23 @@
+{
+    "name": "tune-finder-app",
+    "version": "1.0.0",
+    "engines": {
+        "node": "v22.14.0 "
+    },
+    "main": "index.js",
+    "scripts": {
+        "install-client": "npm install --prefix client",
+        "install-server": "npm install --prefix server",
+        "build-client": "npm run build --prefix client",
+        "heroku-postbuild": "concurrently \"npm:install-*\"; concurrently \"npm:build-*\";",
+        "start": "npm start --prefix server",
+        "dev:react": "concurrently --raw \"npm run server\" \"npm run client\"",
+        "client": "cd client && npm start",
+        "server": "cd server && nodemon server.js"
+    },
+    "dependencies": {
+        "concurrently": "^9.2.0",
+        "nodemon": "^3.1.10"
+    }
+}
+

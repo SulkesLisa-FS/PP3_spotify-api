@@ -1,5 +1,5 @@
 {
-  "name": "pp3_spotify-app",
+  "name": "pp3-spotify-server",
   "version": "1.0.0",
   "scripts": {
     "test": "jest --coverage",
