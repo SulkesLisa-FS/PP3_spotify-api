@@ -30,10 +30,5 @@ app.get("/{*splat}", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));          
 });
 
-// Importing the database connection to the root of the application - respond when the root route is accessed
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "API is Running", success: true });
-});
-
 // Exporting the app module
 module.exports = app;
