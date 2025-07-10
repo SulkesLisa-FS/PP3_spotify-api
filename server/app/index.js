@@ -19,16 +19,19 @@ app.use(express.json());
 // app uses the route handler for all requests to the "/api/v1" endpoint
 //app.use("/api/v1", routeHandler);
 
-// Use express static middleware to the path to the build folder
-// This is used to serve the static files from the React app
+
+// if in production, serve static files from the React dist directory
+if (process.env.NODE_ENV === "production") {
+
+// Serve static files from React dist directory
 app.use(express.static(path.join(__dirname, "../../client/dist")));
 
-// This is used to serve the index.html file from the build folder
-// get all routes and send the index.html file
+// Serve React app for all non-API routes (must be last)
 // the wildcard changed to { *splat } with express 4.16.0
 app.get("/{*splat}", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));          
+  res.sendFile(path.join(__dirname, "../../client/dist", "index.html"));          
 });
+}
 
 // Exporting the app module
 module.exports = app;
