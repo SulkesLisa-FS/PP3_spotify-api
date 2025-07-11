@@ -2,7 +2,20 @@
 const express = require("express");
 const router = express.Router();
 
-// DEFINE AND USE Routes
+
+// Spotify Authentication Routes
+const authRoutes = require("./authRoutes");
+
+
+// Define and use routes
+router.use("/auth", authRoutes);
+
+router.get("/", (req, res) => {
+    res.status(200).json({
+        sucess: true,
+        message: `${req.method} - Request made`
+    });
+});
 
 // export the router
-// module.exports = router;
+module.exports = router;
