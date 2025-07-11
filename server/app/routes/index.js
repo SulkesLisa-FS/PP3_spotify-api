@@ -4,12 +4,12 @@ const router = express.Router();
 
 
 // Spotify Authentication Routes
-const authRoutes = require("./authRoutes");
+const authRoutes = require("./controllers/authRoutes");
 
 
 // Define and use routes
 router.use("/auth", authRoutes);
-
+// Root Route Handler
 router.get("/", (req, res) => {
     res.status(200).json({
         sucess: true,
