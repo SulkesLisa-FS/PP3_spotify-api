@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // Spotify Authentication Routes
-const authRoutes = require("./controllers/authRoutes");
+const authRoutes = require("./authRoutes");
 
 
 // Define and use routes

@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 // Importing the route handler
-//const routeHandler = require("./routes");
+const routeHandler = require("./routes");
 
 // Middleware
 // use CORS to allow cross-origin requests
@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // app uses the route handler for all requests to the "/api/v1" endpoint
-//app.use("/api/v1", routeHandler);
+app.use("/api/v1", routeHandler);
 
 
 // if in production, serve static files from the React dist directory
