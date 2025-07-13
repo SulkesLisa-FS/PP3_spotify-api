@@ -114,6 +114,10 @@ SPOTIFY_API_KEY=your_api_key
 
 <br>
 <br>
+### Branches:
+- main -> deployment
+- main -> staging -> dev 
+<br>
 
 ## Resources:
 
