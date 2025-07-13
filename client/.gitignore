@@ -6,6 +6,7 @@
 .env.test
 .env.development.local
 .env.test.local
+!.env.production
 .env.production.local
 /.pnp
 .pnp.*
@@ -563,7 +564,6 @@ web_modules/
 .env
 .env.development.local
 .env.test.local
-.env.production.local
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
