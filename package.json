@@ -1,23 +1,23 @@
 {
-  "name": "pp3_spotify-app",
-  "version": "1.0.0",
-  "scripts": {
-    "test": "jest --coverage",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "axios": "^1.8.4",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongoose": "^8.13.2",
-    "morgan": "^1.10.0",
-    "path": "^0.12.7",
-    "nodemon": "^3.1.9"
-  }
+    "name": "tune-finder-app",
+    "version": "1.0.0",
+    "engines": {
+        "node": "v22.14.0 "
+    },
+    "main": "index.js",
+    "scripts": {
+        "install-client": "npm install --prefix client",
+        "install-server": "npm install --prefix server",
+        "build-client": "npm run build --prefix client",
+        "heroku-postbuild": "concurrently \"npm:install-*\"; concurrently \"npm:build-*\";",
+        "start": "npm start --prefix server",
+        "dev:react": "concurrently --raw \"npm run server\" \"npm run client\"",
+        "client": "cd client && npm start",
+        "server": "cd server && nodemon server.js"
+    },
+    "dependencies": {
+        "concurrently": "^9.2.0",
+        "nodemon": "^3.1.10"
+    }
 }
+
