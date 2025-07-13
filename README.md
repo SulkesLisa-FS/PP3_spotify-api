@@ -121,6 +121,7 @@ MONGODB_DEV=mongodb://localhost:27017/spotify-app
 
 - `/login` - Login Page
 - `/` - Root Search Page
+- `/contactUs` - Contact Us Page
 
 ### TEST Endpoints:
 
@@ -149,3 +150,5 @@ MongoDB: `https://www.mongodb.com/docs/manual/introduction/`
 Markdown Checkboxes VScode extension by Matt Bierner: `bierner.markdown-checkbox`
 
 Spotify for Developers: `https://developer.spotify.com/documentation/web-api`
+
+Module 2 SCRUM Meeting on FSO
