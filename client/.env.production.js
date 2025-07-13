@@ -1,1 +1,0 @@
-VITE_API_BASE_URL=https://pp3-demo-app-215665657891.herokuapp.com/api/v1/ 
