@@ -44,38 +44,52 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 🔸 Revert the .env.dist file into a .env file and add your values and keys.
 
-
 The .env file should look something like this
 
 ```
-# localhost
+# Environment
+NODE_ENV=development
+ENV_DEV=http://localhost:3000/api/v1/
+
+
+# Server Configuration
 PORT=3000
 
-# MongoDB
-MONGODB_URI = mongodb://127.0.0.1:27017/Spotify-api
+# MongoDB - Development
+MONGODB_DEV=mongodb://localhost:27017/spotify-app
 
-# Spotify API
-SPOTIFY_API_KEY=your_api_key
+
 ```
 
-- Add your own Spotify API key
+<br>
 
-
-🔸 Cd into the pp3_spotify-api directory <br>
+🔸 **Cd into the server directory** <br>
 
 ## Install
 
-    npm run install-client 
-    npm run install-server 
+    npm install
 
 # Next:
 
 ## Run
 
-    npm run dev:react
+    npm run dev
 
 <br>
 
+🔸 **Cd into the client directory** <br>
+
+## Install
+
+    npm install
+
+# Next:
+
+## Run
+
+    npm run dev
+
+<br>
 
 ## Stop the Applications:
 
@@ -87,18 +101,37 @@ SPOTIFY_API_KEY=your_api_key
 
 ### Local Development:
 
-- **Server**: `http://localhost:3000`
+- **Server**: `http://localhost:3000/api/v1/`
+- **client**: `http://localhost:3001/`
 - **Database**: `mongodb://localhost:27017/spotify-app`
+
+### Authentication Endpoints:
+
+- `/api/v1/auth/login` - Spotify login
+- `/api/v1/auth/callback` - Spotify OAuth callback
+- `/api/v1/auth/logout` - User logout
 
 ### Planned API Endpoints:
 
-- `/auth/login` - Spotify login
-- `/auth/callback` - Spotify OAuth callback
-- `/api/spotify/search/artist/:query` - Search artists
-- `/api/spotify/search/album/:query` - Search albums
-- `/api/spotify/search/track/:query` - Search tracks
+- `/api/v1/spotify/search/artist/:query` - Search artists
+- `/api/v1/spotify/search/album/:query` - Search albums
+- `/api/v1/spotify/search/track/:query` - Search tracks
 
+### Client Endpoints:
 
+- `/login` - Login Page
+- `/` - Root Search Page
+
+### TEST Endpoints:
+
+- Server:
+
+* `http://localhost:3000/api/v1/auth/login`
+
+- Client:
+
+* `http://localhost:3001/login`
+* `http://localhost:3001/`
 
 <br>
 <br>
@@ -114,3 +147,5 @@ Express:
 MongoDB: `https://www.mongodb.com/docs/manual/introduction/`
 
 Markdown Checkboxes VScode extension by Matt Bierner: `bierner.markdown-checkbox`
+
+Spotify for Developers: `https://developer.spotify.com/documentation/web-api`

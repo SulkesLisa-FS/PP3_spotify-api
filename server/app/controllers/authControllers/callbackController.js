@@ -1,11 +1,11 @@
-// import Axios and querystring for making HTTP requests and handling query strings
-const axios = require("axios");
+// Import querystring for handling query strings
 const querystring = require("querystring");
-// Import environment configuration and User model
-const envConfig = require("../../config/envConfig");
 // Import User model for database operations
 const User = require("../../models/User");
-
+// Import Spotify service for token handling
+const spotifyService = require("../../services/spotifyService");
+// Import redirect utility
+const { getRedirectUrls } = require("../../utils/redirectUtils");
 
 // Callback controller to handle Spotify's OAuth response
 const callbackController = async (req, res) => {
@@ -14,86 +14,80 @@ const callbackController = async (req, res) => {
   const code = req.query.code || null;
   const state = req.query.state || null;
 
+  // Get redirect URLs for current environment
+  const { home, login } = getRedirectUrls();
+
   // If state is null, redirect with an error
   if (state === null) {
-    return res.redirect('/#' + querystring.stringify({ error: 'state_mismatch' }));
+    return res.redirect(
+      // Redirect to login with an error message
+      login + "?" + querystring.stringify({ error: "state_mismatch" })
+    );
   }
 
-  // Authentication options for exchanging the code for an access token
-  const authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    form: {
-      code: code,
-      redirect_uri: envConfig.spotifyRedirect,
-      grant_type: 'authorization_code'
-    },
-    // Headers for the request, including Basic Auth with client ID and secret
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' +
-        Buffer.from(envConfig.spotifyClientId + ':' + envConfig.spotifyClientSecret).toString('base64')
-    }
-  };
-// Main logic for handling the callback
   try {
-  //  Response from Spotify after exchanging the code for an access token
-    const response = await axios.post(
-      // Using the authOptions to make the POST request
-      authOptions.url,
-      // Using querystring to format the form data
-      querystring.stringify(authOptions.form),
-      // Including the headers from authOptions
-      { headers: authOptions.headers }
-    );
-    // Destructuring access_token and expires_in from the response
-    const { access_token, expires_in } = response.data;
+    // Exchange authorization code for access token using Spotify service
+    const tokenResult = await spotifyService.exchangeCodeForToken(code);
 
-    // Get Spotify user profile
-    const userResponse = await axios.get("https://api.spotify.com/v1/me", {
-      // Using the access token to authenticate the request
-      headers: { Authorization: `Bearer ${access_token}` }
-    });
-    // Extracting user data from the response
-    const spotifyUser = userResponse.data;
+    // If token exchange fails:
+    if (!tokenResult.success) {
+      return res.redirect(
+        // Redirect to login with an error message if token exchange fails
+        login + "?" + querystring.stringify({ error: "token_exchange_failed" })
+      );
+    }
+
+    // Extract access token and expiration from the response
+    const { access_token, expires_in } = tokenResult.data;
+
+    // Get user profile using Spotify service
+    const profileResult = await spotifyService.getUserProfile(access_token);
+
+    // If Profile fetch is not successful:
+    if (!profileResult.success) {
+      return res.redirect(
+        // Redirect to login with an error message if profile fetch fails
+        login + "?" + querystring.stringify({ error: "profile_fetch_failed" })
+      );
+    }
+
+    const spotifyUser = profileResult.data;
 
     // Calculate token expiration date
     const tokenExpires = new Date(Date.now() + expires_in * 1000);
 
-    // Save or update user in DB
+    // Save or update user in database
     let user = await User.findOne({ spotifyId: spotifyUser.id });
 
-    // If the user does not exist, create a new user
+    // If no user found:
     if (!user) {
-      // New user
+      // Create new user
       user = new User({
         spotifyId: spotifyUser.id,
         accessToken: access_token,
         tokenExpires: tokenExpires,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
     } else {
-      // If user exists, update tokens and updatedAt
+      // Else, Update existing user
       user.accessToken = access_token;
       user.tokenExpires = tokenExpires;
       user.updatedAt = new Date();
     }
+
     // Save the user to the database
     await user.save();
     console.log("User saved/updated successfully:", user);
 
-    // Respond (for dev/testing user info)
-    res.json({
-      message: "User saved/updated successfully!",
-      spotifyId: user.spotifyId,
-      tokenExpires: user.tokenExpires,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt
-    });
-
+    // Redirect authenticated user to home page to begin searching for queries.
+    res.redirect(home);
   } catch (error) {
-    console.error("Error during Spotify callback:", error.response?.data || error.message);
-    res.status(500).json({ error: "Failed to authenticate and save user" });
+    console.error("Error during Spotify callback:", error);
+    // if not authenticated - redirect to login page with error
+    res.redirect(
+      login + "?" + querystring.stringify({ error: "authentication_failed" })
+    );
   }
 };
 
