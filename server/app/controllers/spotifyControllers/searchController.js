@@ -1,4 +1,6 @@
 const searchController = async (req, res) => {
+  
+  //  Type of search - default is artist, album, track
   try {
     // Extracting Query Parameters
     const {
@@ -16,28 +18,60 @@ const searchController = async (req, res) => {
       include_external,
     } = req.query;
 
-
-// API Call and response
-
-
-// Validate conditional
-
-// Query Parameter
-
-
-//  limit 
-
-
-//  offset
-
-
-//  User
+// Query Parameter Checks - before calling Spotify API
+// If there is No Query
+ if (!query) {
+  // return the status code 400 bad request
+      return res.status(400).json({
+        success: false,
+        error: "Search query missing."
+      });
+    }
 
 
 
-// Search Parameters
+
+    //  Limit range (Spotify's constraint: 0-50)
+    // Parse limit to an integer
+    const limitNum = parseInt(limit);
+    // Check if limit is within the valid range, if not
+    if (limitNum < 0 || limitNum > 50) {
+      // return status 400 bad request
+      return res.status(400).json({
+        success: false,
+        error: "Limit must be between 0 and 50"
+      });
+    }
+
+    // Offset range (Spotify's constraint: 0-1000)
+    // Parse offset to an integer
+    const offsetNum = parseInt(offset);
+    // Check if offset is within the valid range, if not
+    if (offsetNum < 0 || offsetNum > 1000) {
+      // return status 400 bad request
+      return res.status(400).json({
+        success: false,
+        error: "Offset must be between 0 and 1000"
+      });
+    }
 
 
+
+
+  // Spotify API  Search Parameters
+     const searchParams = {
+      query,
+      type,
+      limit: limitNum,
+      offset: offsetNum,
+      market,
+      include_external
+    };
+
+  // Call Spotify API
+
+
+  // Handle Spotify API response
 
 
 
