@@ -10,18 +10,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  refreshToken: {
+    type: String,
+    required: true
+  },
   tokenExpires: {
     type: Date,
     required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
   }
+}, {
+  timestamps: true
 });
 
 const User = mongoose.model("User", userSchema);
