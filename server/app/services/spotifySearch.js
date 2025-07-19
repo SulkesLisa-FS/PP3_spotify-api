@@ -9,7 +9,7 @@ class SpotifySearch {
 
 // Build The Search from the search controller prams
 async searchItems(searchParams ,accessToken ) {
-
+try {
     // Spotify Base Search Endpoint
     const baseUrl = "https://api.spotify.com/v1/search";
     // Create search object with appending search parameters
@@ -26,9 +26,9 @@ async searchItems(searchParams ,accessToken ) {
       searchUrl.searchParams.append("offset", searchParams.offset.toString());
 
       // Check if there is external audio content
-      if (searchPrams.include_external) {
+      if (searchParams.include_external) {
         searchUrl.searchParams.append("include_external", 
-        searchPrams.include_external);
+        searchParams.include_external);
         
       }
 
@@ -47,11 +47,11 @@ async searchItems(searchParams ,accessToken ) {
         success: true,
         data: formattedData
     };
-}
-catch (error) {
+  } 
+  catch (error) {
       console.error(
         "Error searching Spotify:",
-        //  if response error exisit, use it or else use message
+        // if error response exists, use it; otherwise use message
         error.response?.data || error.message
       );
       return {
@@ -59,13 +59,12 @@ catch (error) {
         error: error.response?.data || error.message,
       };
     }
-
-
+} // ← This closes the searchItems method
 
 
 // Define and Format Search For Easier UI
 // Format Search Results
-formatSearchResults () {
+formatSearchResults (spotifyData) {
 
     return { 
 

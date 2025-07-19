@@ -82,6 +82,28 @@ class SpotifyService {
       };
     }
   }
+
+// Token Refresh Validation Check for user's access token
+refreshToken(user) {
+  // If no user token expiration is set, assume it needs refresh
+  if(!user.tokenExpires) {
+    return true;
+  }
+  // Compare current time with token expiration time
+  // If current time is greater than token expiration time, it needs to be refreshed
+  if (new Date() > user.tokenExpires) {
+    return true; 
+  }
+  // Otherwise the token is still valid and does not need to be refreshed 
+  return false; 
+}
+
+
+
+
+
+
+
 }
 
 module.exports = new SpotifyService();
