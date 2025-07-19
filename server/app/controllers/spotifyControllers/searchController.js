@@ -1,15 +1,14 @@
 const searchController = async (req, res) => {
   
-  //  Type of search - default is artist, album, track
+  // Search - default is artist, album, track
+
   try {
     // Extracting Query Parameters
     const {
       // Search Query
       q: query,
-      // market for country code
-      market,
       // Type of items to search for
-      type = "artist, album, track",
+      type = "artist,album,track",
       // Limit of results (0-10)
       limit = 10,
       // Offset for pagination
@@ -58,13 +57,12 @@ const searchController = async (req, res) => {
 
 
 
-  // Spotify API  Search Parameters
+  // Spotify API Search Parameters
      const searchParams = {
       query,
       type,
       limit: limitNum,
       offset: offsetNum,
-      market,
       include_external
     };
 

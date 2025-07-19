@@ -66,14 +66,11 @@ const callbackController = async (req, res) => {
         spotifyId: spotifyUser.id,
         accessToken: access_token,
         tokenExpires: tokenExpires,
-        createdAt: new Date(),
-        updatedAt: new Date(),
       });
     } else {
       // Else, Update existing user
       user.accessToken = access_token;
       user.tokenExpires = tokenExpires;
-      user.updatedAt = new Date();
     }
 
     // Save the user to the database
