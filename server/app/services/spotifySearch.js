@@ -8,7 +8,7 @@ class SpotifySearch {
    
 
 // Build The Search from the search controller prams
-async seachItems(searchPrams ) {
+async searchItems(searchParams ,accessToken ) {
 
     // Spotify Base Search Endpoint
     const baseUrl = "https://api.spotify.com/v1/search";

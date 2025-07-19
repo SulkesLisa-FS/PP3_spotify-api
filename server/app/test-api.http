@@ -1,0 +1,24 @@
+### Variables
+@baseUrl = http://localhost:3000/api/v1
+
+### Basic Search Test 
+
+### Auth Login - Navigate to this in browser to authenticate
+GET {{baseUrl}}/auth/login
+
+### Basic Search - Should return Spotify results
+GET {{baseUrl}}/spotify/search?q=taylor%20swift
+
+
+### Search Artists 
+GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist&limit=5
+
+
+### Search Albums 
+GET {{baseUrl}}/spotify/search?q=1989&type=album&limit=5
+
+
+### 10. Search with All Parameters
+GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist,album,track&limit=10&offset=0
+
+
