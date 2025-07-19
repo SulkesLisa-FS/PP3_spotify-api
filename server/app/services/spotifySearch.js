@@ -39,15 +39,85 @@ async seachItems(searchPrams ) {
         headers: { Authorization: `Bearer ${accessToken}`},
     });
 
+    // Format response data
+    const formattedData = this.formatSearchResults(response.data);    
+
+    // Return the formatted data
+    return {
+        success: true,
+        data: formattedData
+    };
 }
+catch (error) {
+      console.error(
+        "Error searching Spotify:",
+        //  if response error exisit, use it or else use message
+        error.response?.data || error.message
+      );
+      return {
+        success: false,
+        error: error.response?.data || error.message,
+      };
+    }
 
 
 
 
 // Define and Format Search For Easier UI
+// Format Search Results
+formatSearchResults () {
+
+    return { 
+
+        // ARTIST:
+        artists: spotifyData.artists?.items?.map(artist => ({
+        id: artist.id,
+        name: artist.name,
+        image: this.getImageUrl(artist.images, 300),
+        spotifyUrl: artist.external_urls.spotify,
+        type: "artist"
+        // returns an empty array if no artist are found
+        })) || [],
+
+        //  ALBUMS:
+         albums: spotifyData.albums?.items?.map(album => ({
+        id: album.id,
+        name: album.name,
+        image: this.getImageUrl(album.images, 300),
+        artist: album.artists[0]?.name,
+        spotifyUrl: album.external_urls.spotify,
+        albumType: album.album_type,
+        type: "album"
+        // Returns an empty array if no albums are found
+      })) || [],
+
+       tracks: spotifyData.tracks?.items?.map(track => ({
+        id: track.id,
+        name: track.name,
+        image: this.getImageUrl(track.album?.images, 300),
+        artist: track.artists[0]?.name,
+        spotifyUrl: track.external_urls.spotify,
+        type: "track"
+      })) || []
 
 
 
+    }
+}
+
+
+// Set Image Size (300x300)
+getImageUrl(images, targetSize = 300) {
+    // Check if No image or Image length = 0 - Return null
+    if (!images || images.length === 0) return null;
+
+    // Sort images from smallest to largest based on width and return the image that is the closest to the target size
+    const sortedImages = [...images].sort((a,b) =>
+        Math.abs(a.width - targetSize) - Math.abs(b.width - targetSize)
+    );
+    // Return the first image in the sorted array, which is the closest to the target size
+    return sortedImages[0].url;
+}
 
 
 

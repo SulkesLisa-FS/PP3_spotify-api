@@ -1,3 +1,5 @@
+const spotifySearch = require("../../services/spotifySearch");
+
 const searchController = async (req, res) => {
   
   // Search - default is artist, album, track
@@ -54,6 +56,13 @@ const searchController = async (req, res) => {
       });
     }
 
+     // Combined limit + offset constraint (Spotify's rule)
+    if (limitNum + offsetNum > 1000) {
+      return res.status(400).json({
+        success: false,
+        error: "Limit + Offset cannot exceed 1000"
+      });
+    }
 
 
 
@@ -66,12 +75,27 @@ const searchController = async (req, res) => {
       include_external
     };
 
-  // Call Spotify API
+  // Call Spotify Search API
+  const searchResult = await spotifySearch.searchItems(
+    searchParams,
+    req.user.accessToken
+  );
 
 
   // Handle Spotify API response
+  // Check if serach was Not successful
+  if (!searchResult.success) {
+    return res.status(400).json({
+      success: false,
+      error: searchResult.error
+    });
+  }
 
-
+// Else search was successful and return search results
+  return res.status(200).json({
+    success: true,
+    data: searchResult.data,
+  });
 
   } catch (error) {
     console.error("Search error:", error);
@@ -81,6 +105,8 @@ const searchController = async (req, res) => {
     });
   }
 };
+
+
 
 
 module.exports = searchController;
