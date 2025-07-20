@@ -1,39 +1,9 @@
-// Import axios and querysting
-const axios = require("axios");
-const querystring = require("querystring");
-
-
-// Import user model and service file
-const User = require("../models/User");
-const envConfig = require("../config/envConfig");
-const spotifyService = require("../services/spotifyService");
 
 
 
-// Get the Spotify user ID from the auth header 
+  const getRefreshToken = async () => {
 
-
-// Find user in the database
-
-
-
-//  Call service file to check if token is expired true or flase
-
-
-// Refresh token if true
-
-
-// Update user for valid access
-
-
-
-
-
-
-
-  const userAuth = async () => {
-
-//  SPOTIFY'S EXAMPLE: 
+   // Spotify Example
    const refreshToken = localStorage.getItem('refresh_token');
    const url = "https://accounts.spotify.com/api/token";
 
@@ -56,6 +26,3 @@ const spotifyService = require("../services/spotifyService");
       localStorage.setItem('refresh_token', response.refresh_token);
     }
   }
-
-
-//   module.exports = userAuth;

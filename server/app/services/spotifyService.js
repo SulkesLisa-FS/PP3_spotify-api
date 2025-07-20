@@ -58,12 +58,12 @@ class SpotifyService {
   }
 
   // Get Spotify user profile using access token
-  async getUserProfile(access_token) {
+  async getUserProfile(accessToken) {
     try {
       // Make the GET request to fetch user profile
       const response = await axios.get("https://api.spotify.com/v1/me", {
         // Using the access token for authorization
-        headers: { Authorization: `Bearer ${access_token}` },
+        headers: { Authorization: `Bearer ${accessToken}` },
       });
 
       return {
