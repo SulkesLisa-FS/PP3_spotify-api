@@ -7,7 +7,6 @@ const querystring = require("querystring");
 const User = require("../models/User");
 const envConfig = require("../config/envConfig");
 const spotifyService = require("../services/spotifyService");
-const { param } = require("../routes/spotifyRoutes");
 
 // Midleware that validates Spotify OAuth tokens and refreshes tokens before accessing protected routes
 

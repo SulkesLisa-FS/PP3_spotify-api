@@ -1,5 +1,6 @@
 ### Variables
 @baseUrl = http://localhost:3000/api/v1
+@accessToken = YourAccessTokenHere
 
 ### Basic Search Test 
 
@@ -8,17 +9,19 @@ GET {{baseUrl}}/auth/login
 
 ### Basic Search - Should return Spotify results
 GET {{baseUrl}}/spotify/search?q=taylor%20swift
+Authorization: Bearer {{accessToken}}
 
 
 ### Search Artists 
 GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist&limit=5
-
+Authorization: Bearer {{accessToken}}
 
 ### Search Albums 
 GET {{baseUrl}}/spotify/search?q=1989&type=album&limit=5
+Authorization: Bearer {{accessToken}}
 
-
-### 10. Search with All Parameters
+### Search with All Parameters
 GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist,album,track&limit=10&offset=0
+Authorization: Bearer {{accessToken}}
 
 
