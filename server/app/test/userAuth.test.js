@@ -1,4 +1,4 @@
-const userAuth = require('./userAuth');
+const userAuth = require('../test/userAuth');
 const User = require('../models/User');
 const spotifyService = require('../services/spotifyService');
 const axios = require('axios');
