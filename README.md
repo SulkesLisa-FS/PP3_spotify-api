@@ -51,14 +51,16 @@ The .env file should look something like this
 NODE_ENV=development
 ENV_DEV=http://localhost:3000/api/v1/
 
-
 # Server Configuration
 PORT=3000
 
 # MongoDB - Development
 MONGODB_DEV=mongodb://localhost:27017/spotify-app
 
-
+# Spotify API Credentials
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=http://localhost:3000/api/v1/auth/callback
 ```
 
 <br>
@@ -111,11 +113,10 @@ MONGODB_DEV=mongodb://localhost:27017/spotify-app
 - `/api/v1/auth/callback` - Spotify OAuth callback
 - `/api/v1/auth/logout` - User logout
 
-### Planned API Endpoints:
+### API Endpoints:
 
-- `/api/v1/spotify/search/artist/:query` - Search artists
-- `/api/v1/spotify/search/album/:query` - Search albums
-- `/api/v1/spotify/search/track/:query` - Search tracks
+- `/api/v1/spotify/search?q={query}&type={type}&limit={limit}` - Search artists, albums, and tracks
+
 
 ### Client Endpoints:
 
