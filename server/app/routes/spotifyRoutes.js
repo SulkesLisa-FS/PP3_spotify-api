@@ -4,7 +4,7 @@ const router = express.Router();
 // Import User Authentication Middleware
 const userAuth = require("../middlewares/userAuth");
 
-// Import Search Controller 
+// Import Search Controller
 const searchController = require("../controllers/spotifyControllers/searchController");
 
 // The search endpoint - query parameters are passed via URL - Authenticated by userAuth middleware
