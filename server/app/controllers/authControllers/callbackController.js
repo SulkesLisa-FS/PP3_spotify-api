@@ -38,7 +38,7 @@ const callbackController = async (req, res) => {
     }
 
     // Extract access token and expiration from the response
-    const { access_token, expires_in } = tokenResult.data;
+    const { access_token, refresh_token, expires_in } = tokenResult.data;
 
     // Get user profile using Spotify service
     const profileResult = await spotifyService.getUserProfile(access_token);
@@ -65,15 +65,14 @@ const callbackController = async (req, res) => {
       user = new User({
         spotifyId: spotifyUser.id,
         accessToken: access_token,
+        refreshToken: refresh_token,
         tokenExpires: tokenExpires,
-        createdAt: new Date(),
-        updatedAt: new Date(),
       });
     } else {
       // Else, Update existing user
       user.accessToken = access_token;
+      user.refreshToken = refresh_token;
       user.tokenExpires = tokenExpires;
-      user.updatedAt = new Date();
     }
 
     // Save the user to the database

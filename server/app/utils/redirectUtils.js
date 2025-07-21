@@ -6,7 +6,7 @@ const getRedirectUrls = () => {
   // In dev: client on 3001, in production: same domain
   const baseURL =
     process.env.NODE_ENV === "production"
-      ? envConfig.prodURL
+       ? envConfig.baseURL
       : "http://localhost:3001";
 
   return {

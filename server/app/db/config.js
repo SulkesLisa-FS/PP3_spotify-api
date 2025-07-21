@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async (mongoURI) => {
   try {
-    // use the mongoURI passed as an argument from server.js callback 
+    // use the mongoURI passed as an argument from server.js callback
 
     // Connect to the MongoDB database using Mongoose
     const conn = await mongoose.connect(mongoURI);
