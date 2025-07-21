@@ -1,6 +1,6 @@
 ### Variables
 @baseUrl = http://localhost:3000/api/v1
-@spotifyUserId = 31pgofb7iaay4jilh6mevqqrtgme
+@spotifyUserId = Your-Spotify-ID
 
 ### _____ Basic Working Search Test _____
 
