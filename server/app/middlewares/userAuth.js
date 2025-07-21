@@ -10,22 +10,23 @@ const spotifyService = require("../services/spotifyService");
 
 // Midleware that validates Spotify OAuth tokens and refreshes tokens before accessing protected routes
 
+// JSDoc
 /**
  * Parameters string in Authorization header returns the access token
  * @param {string} authHeader 
  * @returns {string | null} 
  */
-//  Extract the access token from the Authorization header
-const getAccessToken = (authHeader) => {
+//  Extract the user Id from the Authorization header
+const getSpotifyId= (authHeader) => {
   // Check if header exists and follows Bearer token format
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return null;
   }
-  // Extract the access token (everything after "Bearer ")
+  // Extract everything after "Bearer 
   return authHeader.substring(7);
 };
 
-
+// JSDoc
 /**
  * Parameters object that contains the request, response, and next function
  * @param {Object} req 
@@ -35,31 +36,31 @@ const getAccessToken = (authHeader) => {
 // Middleware function to authenticate user using Spotify OAuth
 const userAuth = async (req, res, next) => {
   try {
-    // GET access token from Authorization header
-    const accessToken = getAccessToken(req.headers.authorization);
-    // If no access token is provided, return 401 Unauthorized
-    if (!accessToken) {
+    // GET the spotify Id from Authorization header
+     const spotifyId = getSpotifyId(req.headers.authorization);
+    // If no Id is provided, return 401 Unauthorized
+    if (!spotifyId) {
       return res.status(401).json({
         success: false,
-        error: "Authorization header required: Bearer {accessToken}"
+        error: "Authorization header required: Bearer {spotifyUserId}"
       });
     }
 
-    // Find user record in MongoDB using access token
-    let user = await User.findOne({ accessToken });
+    // Find user record in MongoDB using the Id
+    let user = await User.findOne({ spotifyId  });
     // If user not found, return 401 Unauthorized
     if (!user) {
       return res.status(401).json({
         success: false,
-        error: "Invalid access token or user not found"
+        error: "User not found"
       });
     }
 
 
     // Check if token needs refresh using the service validation method
-    // spotifyService.refreshToken(user) returns true if token is expired or missing
-    if (spotifyService.refreshToken(user)) {
-      console.log("Access token expired, will refresh...");
+    //  returns true if token is expired or missing
+     if (spotifyService.needsTokenRefresh(user)) {
+      console.log("Access token expired, needs refresh");
 
       // Refresh token using Spotify's OAuth pattern
       try {
@@ -72,14 +73,18 @@ const userAuth = async (req, res, next) => {
             // request type for token refresh
             grant_type: "refresh_token",     
             // send the stored refresh token
-            refresh_token: user.refreshToken, 
+            refresh_token: user.refreshToken 
             //  client ID      
-            client_id: envConfig.spotifyClientId,  
+            //client_id: envConfig.spotifyClientId,  
           },
           // HTTP headers for the request
           headers: {
-            // Required format for token requests
-            "content-type": "application/x-www-form-urlencoded", 
+            "content-type": "application/x-www-form-urlencoded",
+              Authorization:
+                "Basic " +
+                Buffer.from(
+                envConfig.spotifyClientId + ":" + envConfig.spotifyClientSecret
+                ).toString("base64"),
           },
         };
         
@@ -111,7 +116,7 @@ const userAuth = async (req, res, next) => {
 
         // Save updated token data to database 
         await user.save();
-        console.log("Access token refreshed successfully for user:", user.spotifyId);
+        console.log("Access token refreshed successfully");
         
       } catch (error) {
         // If token refresh fails, user needs to log in again
