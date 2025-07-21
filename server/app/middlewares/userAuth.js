@@ -10,12 +10,7 @@ const spotifyService = require("../services/spotifyService");
 
 // Midleware that validates Spotify OAuth tokens and refreshes tokens before accessing protected routes
 
-// JSDoc
-/**
- * Parameters string in Authorization header returns the access token
- * @param {string} authHeader 
- * @returns {string | null} 
- */
+
 //  Extract the user Id from the Authorization header
 const getSpotifyId= (authHeader) => {
   // Check if header exists and follows Bearer token format
@@ -26,13 +21,7 @@ const getSpotifyId= (authHeader) => {
   return authHeader.substring(7);
 };
 
-// JSDoc
-/**
- * Parameters object that contains the request, response, and next function
- * @param {Object} req 
- * @param {Object} res 
- * @param {Function} next 
- */
+
 // Middleware function to authenticate user using Spotify OAuth
 const userAuth = async (req, res, next) => {
   try {

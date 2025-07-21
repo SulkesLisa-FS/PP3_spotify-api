@@ -2,15 +2,6 @@
 const mongoose = require("mongoose");
 
 
-// JSDoc
-/**
- * Establishes connection to MongoDB database
- - MongoDB connection string from environment config file
- * @param {string} mongoURI 
- - Resolves when connection is established
- * @returns {Promise} 
- */
-
 const connectDB = async (mongoURI) => {
   try {
     // use the mongoURI passed as an argument from server.js callback 
