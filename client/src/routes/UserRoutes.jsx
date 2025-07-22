@@ -1,9 +1,11 @@
-import { Routes, Route, Link } from "react-router-dom";
-import { Box, Flex, Text } from "@chakra-ui/react";
+// Import React 
+import { Routes, Route } from "react-router-dom";
+
 
 // IMPORT PAGES
 import LoginPage from "../pages/Login";
 import SearchPage from "../pages/Search";
+import ContactUs from "../pages/ContactUs";
 
 
 function UserRoutes({ currentUser }) {
@@ -11,24 +13,8 @@ function UserRoutes({ currentUser }) {
     return (
  <div>
 
-  
-
-     {/* Simple Navigation Header for Testing */}
-     <Box bg="#112236" color="white" p={4} mb={4}>
-       <Flex justify="space-between" align="center">
-         <Text fontSize="lg" fontWeight="bold">Tune Finder</Text>
-         <Flex gap={4}>
-           <Link to="/" style={{ color: 'white', textDecoration: 'underline' }}>
-             Search
-           </Link>
-           <Link to="/login" style={{ color: 'white', textDecoration: 'underline' }}>
-             Login
-           </Link>
-         </Flex>
-       </Flex>
-     </Box>
-
      {/* User Status - for testing */}
+     {/* Checks if user is logged In or Out */}
      <div>
       {currentUser 
         ? <h2>User Logged In</h2>
@@ -38,19 +24,14 @@ function UserRoutes({ currentUser }) {
    
    <section>
      <Routes>
-       {/* Search page as main landing */}
-       <Route path="/" element={<SearchPage />} />
-       {/* Login page */}
-       <Route path="/login" element={<LoginPage />} />
-       {/* Spotify OAuth callback route - will add when ready */}
-       {/* <Route path="/auth/callback" element={<CallbackPage />} /> */}
+        {/* Search page as root/home dashboard - but requires login */}
+        <Route path="/" element={<SearchPage />} />
+        {/* Login page for authentication */}
+        <Route path="/login" element={<LoginPage />} />
+        {/* Contact Us page */}
+        <Route path="/contactUs" element={<ContactUs />} />
      </Routes>
    </section>
-
-
-
-
-
 
     </div>
   );
