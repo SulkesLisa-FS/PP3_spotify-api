@@ -23,12 +23,8 @@ function Footer({ currentUser, showToast }) {
       py={3}
       px={4}
       w="100%"
-      position="fixed"
-      bottom={0}
-      left={0}
-      zIndex={100}
       borderTop="1px solid #ccc"
-      minHeight="64px"
+      //minHeight="70px"
     >
       <Flex
         align="center"
@@ -39,7 +35,7 @@ function Footer({ currentUser, showToast }) {
         minHeight="40px"
       >
         {/* Left Container - Disclaimer */}
-        <Box minW="220px">
+        <Box minW="220px" ml="1rem">
           <Text fontSize=".7rem" >
              Not affiliated but powered by Spotify API.
           </Text>
@@ -61,7 +57,7 @@ function Footer({ currentUser, showToast }) {
         </Text>
 
         {/* Right Container - Nav Links */}
-        <Box minW="110px" textAlign="right" mr={4}>
+        <Box minW="110px" textAlign="right" mr={10}>
             
           <VStack align="flex-end" spacing={0}>
             {/* Login Page */}

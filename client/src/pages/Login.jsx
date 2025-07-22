@@ -19,12 +19,15 @@ function Login() {
       textAlign="center"
       py={8}
     >
-      {/* TODO:  H1 Page Title */}
-      <Text as="h2" color="#112236" fontWeight="600" fontSize="3rem" mb={4}>
-       Login Page
+      {/* H1 Page Title */}
+      <Text as="h2" color="#112236" fontWeight="600" fontSize="3rem" m="0 auto">
+       Explore Your Music Here!
       </Text>
 
        {/* TODO:  P tag Application Info */}
+       <Text as="p" color="#112236" fontWeight="300" fontSize="1.5rem" width="35rem" textAlign={"left"} m="0 auto" pl="15px">
+       This secure portal allows authorized users to search atrist, albums, and songs by logging into their Spotify account. A spotify account is required.
+      </Text>
 
         {/* TODO:  Login Container */}
 

@@ -37,9 +37,9 @@ function App() {
     <Box
       as="div"
       bg="#EAE0D5"
-      minHeight="100vh"
+      //minHeight="80vh"
       margin="0 auto"
-      pb="70px"
+      //pb="70px"
     >
 
       {/*  Header Component */}
