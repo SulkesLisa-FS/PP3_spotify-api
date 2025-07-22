@@ -24,12 +24,16 @@ function UserRoutes({ currentUser }) {
    
    <section>
      <Routes>
-        {/* Search page as root/home dashboard - but requires login */}
-        <Route path="/" element={<SearchPage />} />
-        {/* Login page for authentication */}
+       
+        {/* Login page for authentication - Allways Accessable */}
         <Route path="/login" element={<LoginPage />} />
-        {/* Contact Us page */}
+        {/* Contact Us page - Allways Accessable */}
         <Route path="/contactUs" element={<ContactUs />} />
+
+         {/* Search page as root/home dashboard - but requires login */}
+         {/* Check for user, if no user go to login page */}
+        <Route path="/" 
+        element={currentUser ? <SearchPage /> : <LoginPage/>} />
      </Routes>
    </section>
 
