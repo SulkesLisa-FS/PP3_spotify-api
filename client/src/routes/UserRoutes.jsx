@@ -1,5 +1,5 @@
 // Import React 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 
 // IMPORT PAGES
@@ -15,7 +15,7 @@ function UserRoutes({ currentUser }) {
 
      {/* User Status - for testing */}
      {/* Checks if user is logged In or Out */}
-     <div>
+    <div>
       {currentUser 
         ? <h2>User Logged In</h2>
         : <h2>User Logged Out</h2>
@@ -24,16 +24,16 @@ function UserRoutes({ currentUser }) {
    
    <section>
      <Routes>
-       
-        {/* Login page for authentication - Allways Accessable */}
-        <Route path="/login" element={<LoginPage />} />
-        {/* Contact Us page - Allways Accessable */}
-        <Route path="/contactUs" element={<ContactUs />} />
-
-         {/* Search page as root/home dashboard - but requires login */}
-         {/* Check for user, if no user go to login page */}
-        <Route path="/" 
-        element={currentUser ? <SearchPage /> : <LoginPage/>} />
+     {/* Conditional root route - Search if logged in, redirect to login if not */}
+       <Route 
+         path="/" 
+         element={currentUser ? <SearchPage /> : <Navigate to="/login" replace />} 
+       />
+       {/* Login page - always accessible */}
+       <Route path="/login" element={<LoginPage />} />
+       {/* Contact page - always accessible */}
+       <Route path="/contact" element={<ContactUs />} />
+     
      </Routes>
    </section>
 

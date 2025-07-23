@@ -1,21 +1,21 @@
-// Import React 
-import { Link as RouterLink } from "react-router-dom";
 // Import Components 
-import apiExports from "../API/index.js";
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Black.png";
 // Import Libraries
-import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, Link } from "@chakra-ui/react"
 
-//Variables for API methods and Spotify Sign Up URL
-const { API, SPOTIFY_SIGNUP_URL } = apiExports;
+//Spotify Sign Up URL
+const SPOTIFY_SIGNUP_URL = "https://www.spotify.com/signup";
 
-function Header({ currentUser, onLogout }) {
+function Header({ currentUser, isLoggingOut, onLogout }) {
   return (
     // Page Container
     <Box as="header"
       aria-label="Page Header"
       borderColor="gray.900"
-      boxShadow="5px 6px 5px #99be9eff"bg="#1ED760" color="#121212" p={4} mb={4} 
+      boxShadow="5px 6px 5px #99be9eff"
+      bg="#1ED760" 
+      color="#121212"
+       p={4} mb={4} 
       w="100%" position="relative">
       <Flex
         align="center"
@@ -48,37 +48,34 @@ function Header({ currentUser, onLogout }) {
           Tune Finder
         </Text>
 
-        {/* Right Container - Sign Up or Logout */}
+        {/* Right Container - Current User Check For Sign Up or Logout */}
         <Box minW="100px" textAlign="right">
-            {/* If no user - the user is logged out - Show Sign Up link */}
-          {!currentUser ? (
-            <Link
-              href={SPOTIFY_SIGNUP_URL}
-              isExternal
-              color="#121212"
-              textDecoration="none"
-              fontWeight="600"
-              fontSize="1.5rem"
-            >
-              Sign Up
-            </Link>
+          {/* If no user AND not logging out - Show Sign Up link */}
+          {!currentUser && !isLoggingOut ? (
+          <Link
+            href={SPOTIFY_SIGNUP_URL}
+            isExternal
+            color="#121212"
+            textDecoration="none"
+            fontWeight="600"
+            fontSize="2rem"
+          >
+            Sign Up
+          </Link>
           ) : (
-            // Else the use is logged in - Show Logout link
-            // If the user clicks Logout, call the API logout method and direct to the login page
-            <RouterLink 
-              to="/login" 
-              onClick={() => API.logout()}
-            >
-              <Text
+            // Else - show logout link
+            // If the user clicks Logout, call the logout method 
+              <Link
+                onClick={onLogout}
                 color="#121212"
                 textDecoration="none"
                 fontWeight="600"
-                fontSize="1.5rem"
+                fontSize="2rem"
                 cursor="pointer"
               >
-                Logout
-              </Text>
-            </RouterLink>
+                {/* Check if user is LoggingOut */}
+              {isLoggingOut ? "Logging out..." : "Logout"}
+              </Link>
           )}
         </Box>
       </Flex>
