@@ -1,6 +1,5 @@
 // Import React
 import "../App.css";
-import { useEffect } from "react";
 // Import Libraries
 import { Box, Text } from "@chakra-ui/react";
 // Import Components
