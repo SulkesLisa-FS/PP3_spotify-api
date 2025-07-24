@@ -11,8 +11,8 @@ function Header({ currentUser, isLoggingOut, onLogout }) {
     // Page Container
     <Box as="header"
       aria-label="Page Header"
-      borderColor="gray.900"
-      boxShadow="5px 6px 5px #99be9eff"
+      borderBottom="8px solid #378d41a9"
+      //boxShadow="5px 2px 1px #1ed75fc2"
       bg="#1ED760" 
       color="#121212"
        p={4} mb={4} 

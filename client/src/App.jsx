@@ -93,7 +93,7 @@ useEffect(() => {
   return (
     <Box
       as="div"
-      bg="#EAE0D5"
+      bg="black"
       //minHeight="80vh"
       margin="0 auto"
       //pb="70px"

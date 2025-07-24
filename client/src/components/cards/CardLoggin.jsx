@@ -8,7 +8,7 @@ import { SPOTIFY_LOGIN_URL } from "../../services/auth.service";
 const CardLoggin = () => {
   return (
     <VStack
-      spacing={8}
+      spacing={10}
       p={10}
       borderRadius="xl"
       boxShadow="lg"
@@ -19,14 +19,14 @@ const CardLoggin = () => {
       <Image
         src={spotifyLogo}
         alt="Spotify Logo"
-        width="160px"
+        width="230px"
         display="block"
       />
       
       {/* CTA - H3 */}
       <Text
         color="#FFFFFF"
-        fontSize="md"
+        fontSize="1.3rem"
         textAlign="center"
       >
         Please login to continue!
@@ -36,13 +36,14 @@ const CardLoggin = () => {
       <Button
         as="a"
         href={SPOTIFY_LOGIN_URL}
-        size="lg"
+        size="md"
         bg="#1DB954"
         color="#121212"
+        borderRadius="50px"
         _hover={{ bg: "#1ed760" }}
-        fontWeight="bold"
-        fontSize="lg"
-        width="100%"
+        fontWeight="md"
+        fontSize="2rem"
+        width="70%"
         boxShadow="md"
       >
         Login

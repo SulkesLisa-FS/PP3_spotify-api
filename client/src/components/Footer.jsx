@@ -23,7 +23,7 @@ function Footer({ currentUser, showToast }) {
       py={3}
       px={4}
       w="100%"
-      borderTop="1px solid #ccc"
+      //borderTop="1px solid #ccc"
       //minHeight="70px"
     >
       <Flex
@@ -36,7 +36,7 @@ function Footer({ currentUser, showToast }) {
       >
         {/* Left Container - Disclaimer */}
         <Box minW="220px" ml="1rem">
-          <Text fontSize=".7rem" >
+          <Text fontSize=".9rem" letterSpacing="1.8px">
              Not affiliated but powered by Spotify API.
           </Text>
         </Box>
@@ -57,25 +57,27 @@ function Footer({ currentUser, showToast }) {
         </Text>
 
         {/* Right Container - Nav Links */}
-        <Box minW="110px" textAlign="right" mr={10}>
+        <Box minW="110px" textAlign="left"  mr={10}>
             
-          <VStack align="flex-end" spacing={0}>
+          <VStack 
+          align="flex-start"   
+          spacing={0} > 
             {/* Login Page */}
-            <ChakraLink as={Link} to="/login" fontWeight="600" textDecoration="none">
+            <ChakraLink as={Link} to="/login" fontWeight="500" textDecoration="none">
               Login
             </ChakraLink>
             {/* Search Page / Home */}
             <ChakraLink
               as={Link}
               to="/"
-              fontWeight="600"
+              fontWeight="500"
               textDecoration="none"
               onClick={handleSearchClick}
             >
               Search
             </ChakraLink>
             {/* Contact Us Page */}
-            <ChakraLink as={Link} to="/contact" fontWeight="600" textDecoration="none">
+            <ChakraLink as={Link} to="/contact" fontWeight="500" textDecoration="none">
               Contact Us
             </ChakraLink>
           </VStack>
