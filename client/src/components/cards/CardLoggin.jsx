@@ -45,6 +45,7 @@ const CardLoggin = () => {
         fontSize="2rem"
         width="70%"
         boxShadow="md"
+        py="20px"
       >
         Login
       </Button>

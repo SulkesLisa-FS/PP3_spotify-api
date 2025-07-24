@@ -15,7 +15,7 @@ function UserRoutes({ currentUser }) {
 
      {/* User Status - for testing */}
      {/* Checks if user is logged In or Out */}
-    <div>
+    <div style={{color: '#ffffff',  paddingLeft: "3rem"}}>
       {currentUser 
         ? <h2>User Logged In</h2>
         : <h2>User Logged Out</h2>

@@ -18,18 +18,21 @@ function Login() {
   return (
     <Box
       as="div"
-      minHeight={"100vh"}
+      minHeight={"95vh"}
       width="95%"
       maxWidth="1800px"
       m="0 auto"
       textAlign="center"
-      py={8}
+      //py={8}
       // Image Background Styling
       backgroundImage={`url(${Background})`}
       backgroundSize="70% auto"  
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      boxShadow="inset -250px 0 150px -50px rgba(0,0,0,0.8), inset 0 -50px 80px -30px rgba(0,0,0,0.8)"
+      boxShadow="
+      inset 150px 0 150px -50px rgba(0,0,0,0.8), 
+      inset -250px 0 150px -50px rgba(0,0,0,0.8), 
+      inset 0 -50px 80px -30px rgba(0,0,0,0.8)"
     >
       {/* H1 Page Title */}
       <Text as="h2" color="#ffffff" fontWeight="600" fontSize="3rem" m="0 auto">

@@ -1,5 +1,20 @@
+// Import React
 import "../App.css";
-import { Box, Text } from "@chakra-ui/react";
+import { useState } from "react";
+
+// Import Libaries
+import { 
+  Box, 
+  Text,  
+  Input, 
+  InputGroup, 
+  InputLeftElement, 
+  InputRightElement } from "@chakra-ui/react";
+import { FaSearch, FaTimes  } from "react-icons/fa";
+
+// Import Components
+
+
 
 // TODO:  Add Background Image backgroundVT1000
 // TODO:  Add Variables currentUser, loading, error
@@ -8,9 +23,15 @@ import { Box, Text } from "@chakra-ui/react";
 //        -  Change state from title and CTA to Results 
 //           When user begins to type in the search bar
 
+
+
+
+
 // Spotify Search Page _ After User Authentication
+
 function Search() {
 
+ const [query, setQuery] = useState("");
 
 // TODO:  Hook useEffet
 
@@ -28,15 +49,43 @@ function Search() {
       textAlign="center"
       py={8}
     >
-      {/* TODO:  Import Search Component */}
+    {/* Search Component */}
+    <InputGroup maxW="600px" mx="auto" mb={8}> 
+      {/* Left search icon */}
+      <InputLeftElement pointerEvents="none">
+        <FaSearch color="gray.400" />
+      </InputLeftElement>
       
-      <Text as="h2" color="#112236" fontWeight="600" fontSize="3rem" mb={4}>
+      {/* Search Input */}
+      <Input
+        placeholder="Search artist, albums, songs"
+        value={query}
+        onChange={e => {
+              const q = e.target.value;
+              setQuery(q);
+              console.log("query:", q);
+          }}
+        bg="white"
+        borderRadius="full"
+        pr="3rem"    
+          
+     />
+     
+     </InputGroup>
+
+
+
+
+
+
+      
+      <Text as="h2" color="#ffffff" fontWeight="600" fontSize="3rem" mb={4}>
         Search Page
       </Text>
         {/* TODO:  H1 Page Title */}
 
         {/* TODO:  H2 CTA */}
-      <Text color="#666" fontSize="lg">
+      <Text color="#ffffff" fontSize="lg">
         Search to get started
       </Text>
 
