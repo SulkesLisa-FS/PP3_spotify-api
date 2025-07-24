@@ -40,6 +40,8 @@ function Search() {
         Search to get started
       </Text>
 
+
+
       {/* TODO:  Grid row 1. Title - Artist */}
       {/* TODO:  Grid row 1. Cards */}
 
@@ -48,6 +50,20 @@ function Search() {
 
       {/* TODO:  Grid row 3. Title - Songs */}
       {/* TODO:  Grid row 3. Cards */}
+
+
+
+{/* ARTIST */}
+
+
+
+{/* ALBUMS */}
+
+
+
+
+{/* TRACKS */}
+
 
     </Box>
   );
