@@ -1,6 +1,6 @@
 // Import React
 import "../App.css";
-import { useState } from "react";
+import { useState, useEffect,  } from "react";
 
 // Import Libaries
 import { 
@@ -13,6 +13,7 @@ import {
 import { FaSearch, FaTimes  } from "react-icons/fa";
 
 // Import Components
+import API from "../API/index"; 
 
 
 
@@ -32,8 +33,28 @@ import { FaSearch, FaTimes  } from "react-icons/fa";
 function Search() {
 
  const [query, setQuery] = useState("");
+ const [results, setResults] = useState({ artists: [], albums: [], tracks: [] });
 
-// TODO:  Hook useEffet
+//Search Query useEffet
+useEffect(() => {
+  if (!query.trim()) {
+    setResults({ artists: [], albums: [], tracks: [] });
+    return;
+  }
+
+console.log("query changed:", query)
+
+API.search({ q: query, type: "artist,album,track", limit: 10 })
+.then((res) => {
+  console.log("Search Results:", res.data)
+  setResults(res.data);
+})
+.catch((error) => {
+  console.log(error.message)
+})
+
+}, [query]);
+
 
 // TODO:  Add API function
 
@@ -63,7 +84,7 @@ function Search() {
         onChange={e => {
               const q = e.target.value;
               setQuery(q);
-              console.log("query:", q);
+              //console.log("query:", q);
           }}
         bg="white"
         borderRadius="full"
