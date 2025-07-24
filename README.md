@@ -32,6 +32,10 @@ This is a Spotify Web API application that allows users to search for artists, a
   - Safari v18 or later
   - Microsoft Edge (Chromium-based)
 
+# Important!
+
+**To use the app, please send me the email address you use to log into Spotify via FSO. I’ll add it to my Spotify Developer Dashboard so you're authorized to test the app.**
+
 <br>
 
 # Getting Started:
@@ -65,13 +69,12 @@ SPOTIFY_REDIRECT_URI=http://localhost:3000/api/v1/auth/callback
 
 <br>
 
-🔸 **Cd into the server directory** <br>
 
 ## Install
 
     npm install
 
-# Next:
+
 
 ## Run
 
@@ -85,7 +88,7 @@ SPOTIFY_REDIRECT_URI=http://localhost:3000/api/v1/auth/callback
 
     npm install
 
-# Next:
+
 
 ## Run
 
@@ -152,4 +155,4 @@ Markdown Checkboxes VScode extension by Matt Bierner: `bierner.markdown-checkbox
 
 Spotify for Developers: `https://developer.spotify.com/documentation/web-api`
 
-Module 2 SCRUM Meeting on FSO
+Module 2 & 3 SCRUM Meeting on FSO
