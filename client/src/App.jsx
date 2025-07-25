@@ -25,15 +25,16 @@ function App() {
 useEffect(() => {
   // Get the URL parameters
    const params = new URLSearchParams(location.search);
-  // Extract the spotifyId parameter
+  // Extract both accessToken and spotifyId parameters
+  const accessToken = params.get("accessToken");
   const spotifyId = params.get("spotifyId");
-  // If spotifyId exists, set it in localStorage and update currentUser state
+  // If both accessToken and spotifyId exist, set them in localStorage and update currentUser state
   // Redirect to home page
-  if (spotifyId) {
-    // Set the current user in AuthServices
-    AuthServices.setCurrentUser(spotifyId);
-    // Update the currentUser state
-    setCurrentUser({ spotifyId });
+ if (accessToken && spotifyId) {
+  // Set the current user in AuthServices with both parameters
+  AuthServices.setCurrentUser(accessToken, spotifyId);
+  // Update the currentUser state with both values
+  setCurrentUser({ accessToken, spotifyId });
     // Navigate to home page
     // Use replace to avoid adding to history stack
     navigate("/", { replace: true });
@@ -42,21 +43,21 @@ useEffect(() => {
 
 
 
- // On mount, check for user in localStorage 
-  useEffect(() => {
-    // If currentUser is null, check localStorage for user data
-    if (currentUser === null) {
-      // Get user data from localStorage
-      const user = AuthServices.getCurrentUser();
-      // If user data exists, set it in state
-      if (user) {
-        setCurrentUser(user);
-      } else {
-        // If no user data, set currentUser to false
-        setCurrentUser(false);
-      }
+// On mount, check for user in localStorage 
+useEffect(() => {
+  // If currentUser is null, check localStorage for user data
+  if (currentUser === null) {
+    // Get user data from localStorage (already validated by getCurrentUser)
+    const user = AuthServices.getCurrentUser();
+    // If user data exists, set it in state
+    if (user) {
+      setCurrentUser(user);
+    } else {
+      // If no user data, set currentUser to false
+      setCurrentUser(false);
     }
-  }, [currentUser]);
+  }
+}, [currentUser]);
 
 
 

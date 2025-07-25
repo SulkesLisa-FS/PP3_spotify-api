@@ -1,9 +1,9 @@
 function authHeader() {
   const user = JSON.parse(localStorage.getItem("user"));
-  // Change from user.token to user.spotifyId
-  if (user && user.spotifyId) {  
-    // Use spotifyId
-    return { Authorization: `Bearer ${user.spotifyId}` };  
+  // Check for both accessToken and spotifyId, use spotifyId for Bearer auth
+  if (user && user.accessToken && user.spotifyId) {
+    // Use spotifyId for server user lookup
+    return { Authorization: `Bearer ${user.spotifyId}` };   
   } 
   else {
     return {};
@@ -11,3 +11,6 @@ function authHeader() {
 }
 
 export default authHeader;
+
+
+

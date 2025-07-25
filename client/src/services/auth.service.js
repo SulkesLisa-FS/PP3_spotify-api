@@ -15,15 +15,17 @@ export const SPOTIFY_LOGIN_URL = `${BASE_URL}${API_URL}/login`;
 
 //  CURRENT USER - LOGGED IN USER 
 const getCurrentUser = () => {
-    // only checking local storage and not makeing an API request
-    return JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
+    // Return user only if it has valid authentication data
+    return user && user.accessToken && user.spotifyId ? user : null;
 };
 
-// Set Current User Data in local storage - ID only
-const setCurrentUser = (spotifyId) => {
-  const user = { spotifyId };
+// Set Current User Data in local storage - access token and ID
+const setCurrentUser = (accessToken, spotifyId) => {
+  const user = { accessToken, spotifyId };
   localStorage.setItem("user", JSON.stringify(user));
 };
+
 
 //  LOGOUT WITH SERVER CALL
 const logout = () => {
