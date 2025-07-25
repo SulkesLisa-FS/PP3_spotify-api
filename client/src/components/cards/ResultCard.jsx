@@ -11,11 +11,16 @@ const ResultCard = ({ title, subtitle, image, url }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`Link to Open ${title} ${subtitle} on Spotify` }
       bg="white"
       borderRadius="md"
       overflow="hidden"
       boxShadow="sm"
       _hover={{ boxShadow: "md" }}
+      _focus={{
+        outline: "2px solid #1DB954",
+        outlineOffset: "2px"
+      }}
     >
       {/* Image or Image Placeholder */}
       {/* If there is an image show image*/}

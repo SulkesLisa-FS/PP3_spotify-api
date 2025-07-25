@@ -57,18 +57,19 @@ function Footer({ currentUser, showToast }) {
         </Text>
 
         {/* Right Container - Nav Links */}
-        <Box minW="110px" textAlign="left"  mr={10}>
+        <Box as="nav" aria-label="Footer Navigation" minW="110px" textAlign="left"  mr={10}>
             
           <VStack 
           align="flex-start"   
           spacing={0} > 
             {/* Login Page */}
-            <ChakraLink as={Link} to="/login" fontWeight="500" textDecoration="none">
+            <ChakraLink as={Link} aria-label="Login" to="/login" fontWeight="500" textDecoration="none">
               Login
             </ChakraLink>
             {/* Search Page / Home */}
             <ChakraLink
               as={Link}
+              aria-label="Search"
               to="/"
               fontWeight="500"
               textDecoration="none"
@@ -77,7 +78,7 @@ function Footer({ currentUser, showToast }) {
               Search
             </ChakraLink>
             {/* Contact Us Page */}
-            <ChakraLink as={Link} to="/contact" fontWeight="500" textDecoration="none">
+            <ChakraLink as={Link} aria-label="Contact Us" to="/contact" fontWeight="500" textDecoration="none">
               Contact Us
             </ChakraLink>
           </VStack>

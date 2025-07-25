@@ -119,7 +119,7 @@ useEffect(() => {
 
   return (
     <Box
-      as="div"
+      as="main"
       minHeight="100vh"
       width="95%"
       maxWidth="1300px"
@@ -148,6 +148,7 @@ useEffect(() => {
       
       {/* Search Input */}
       <Input
+        aria-label="Search"
         placeholder="Search artist, albums, songs"
         value={query}
         onChange={e => setQuery(e.target.value)}
@@ -184,7 +185,7 @@ useEffect(() => {
            No Results
          </Text>
          {/* CTA */}
-         <Text color="#ffffff" fontSize="1.8rem" mb={4}>
+         <Text as="p"  color="#ffffff" fontSize="1.8rem" mb={4}>
            Search to get started
          </Text>
        </>

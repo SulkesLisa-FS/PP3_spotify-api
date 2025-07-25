@@ -17,7 +17,7 @@ function Login() {
   
   return (
     <Box
-      as="div"
+      as="main"
       minHeight={"95vh"}
       width="95%"
       maxWidth="1800px"
@@ -34,7 +34,7 @@ function Login() {
       inset -250px 0 150px -50px rgba(0,0,0,0.8), 
       inset 0 -50px 80px -30px rgba(0,0,0,0.8)"
     >
-      {/* H1 Page Title */}
+      {/* H2 Page Title */}
       <Text as="h2" color="#ffffff" fontWeight="600" fontSize="3rem" m="0 auto">
        Explore Your Music Here!
       </Text>
@@ -46,10 +46,12 @@ function Login() {
 
       {/* Card Login Container */}
       <Box 
-      display="flex"
-      justifySelf="center"
-      justifyContent="center"
-       spacing={5}
+        role="region"
+        aria-label="Spotify login"
+        display="flex"
+        justifySelf="center"
+        justifyContent="center"
+        spacing={5}
         p={10}
         borderRadius="xl"
          //boxShadow="2px 2px 10px #939493ff"
