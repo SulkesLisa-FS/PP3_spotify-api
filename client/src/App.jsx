@@ -14,7 +14,7 @@ import AuthServices from "./services/auth.service";
 
 
 function App() {
-  // Variables
+  // State Variables
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
    const location = useLocation();

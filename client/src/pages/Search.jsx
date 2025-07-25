@@ -6,8 +6,11 @@ import { useState, useEffect,  } from "react";
 import { 
   Box, 
   Text,  
+  Flex,
   Input, 
+  Spinner, 
   InputGroup, 
+  IconButton,
   InputLeftElement, 
   InputRightElement } from "@chakra-ui/react";
 import { FaSearch, FaTimes  } from "react-icons/fa";
@@ -31,32 +34,44 @@ import API from "../API/index";
 // Spotify Search Page _ After User Authentication
 
 function Search() {
+  // State Variables
 
- const [query, setQuery] = useState("");
- const [results, setResults] = useState({ artists: [], albums: [], tracks: [] });
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [results, setResults] = useState({ artists: [], albums: [], tracks: [] });
+  
 
-//Search Query useEffet
+
+
+//Search Query 
 useEffect(() => {
   if (!query.trim()) {
     setResults({ artists: [], albums: [], tracks: [] });
     return;
   }
+// Test Query
+//console.log("query changed:", query)
 
-console.log("query changed:", query)
+
+  setLoading(true);
+  setError("");
+
+
 
 API.search({ q: query, type: "artist,album,track", limit: 10 })
 .then((res) => {
   console.log("Search Results:", res.data)
   setResults(res.data);
 })
-.catch((error) => {
-  console.log(error.message)
+.catch(() => {
+    setError("An unexpected error occurred. Please try again.");
 })
+    .finally(() => {
+      setLoading(false);
+    });
 
 }, [query]);
-
-
-// TODO:  Add API function
 
 // TODO:  3 row grid layout
 
@@ -70,6 +85,8 @@ API.search({ q: query, type: "artist,album,track", limit: 10 })
       textAlign="center"
       py={8}
     >
+
+
     {/* Search Component */}
     <InputGroup maxW="600px" mx="auto" mb={8}> 
       {/* Left search icon */}
@@ -81,17 +98,27 @@ API.search({ q: query, type: "artist,album,track", limit: 10 })
       <Input
         placeholder="Search artist, albums, songs"
         value={query}
-        onChange={e => {
-              const q = e.target.value;
-              setQuery(q);
-              //console.log("query:", q);
-          }}
+        onChange={e => setQuery(e.target.value)}
         bg="white"
         borderRadius="full"
         pr="3rem"    
-          
      />
-     
+
+      {/* Clear Query - Right Side Icon */}
+      {query && (
+        <InputRightElement width="2.5rem">
+          <IconButton
+            aria-label="Clear search"
+            icon={<FaTimes />}
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              setQuery("");
+              setResults({ artists: [], albums: [], tracks: [] });
+            }}
+          />
+        </InputRightElement>
+      )}
      </InputGroup>
 
 
