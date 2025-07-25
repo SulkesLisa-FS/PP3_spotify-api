@@ -6,6 +6,20 @@ import authHeader from "../services/authHeader";
 // Base URL for the API 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1";
 
+// Global axios interceptor to handle 401 responses
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Check if it's a 401 Unauthorized error
+    if (error.response && error.response.status === 401) {
+      // Clear user data from localStorage
+      localStorage.removeItem('user');
+      // Redirect to login page
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Create an API object to hold all the API methods
 const API = Object.create(null);
