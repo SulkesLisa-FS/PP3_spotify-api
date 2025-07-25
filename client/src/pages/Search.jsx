@@ -60,16 +60,16 @@ useEffect(() => {
 
 
 API.search({ q: query, type: "artist,album,track", limit: 10 })
-.then((res) => {
-  console.log("Search Results:", res.data)
-  setResults(res.data);
-})
-.catch(() => {
-    setError("An unexpected error occurred. Please try again.");
-})
-    .finally(() => {
+  .then(({ data }) => {
+      console.log("Search results:", data);
+      setResults(data);
+  })
+  .catch(() => {
+      setError("An unexpected error occurred. Please try again.");
+  })
+  .finally(() => {
       setLoading(false);
-    });
+  });
 
 }, [query]);
 
