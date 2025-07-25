@@ -6,9 +6,19 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "../pages/Login";
 import SearchPage from "../pages/Search";
 import ContactUs from "../pages/ContactUs";
+import { Box, Spinner } from "@chakra-ui/react";
 
 
 function UserRoutes({ currentUser }) {
+
+  //Show spinner while checking user authentication
+  if (currentUser === undefined) {
+    return (
+        <Box display="flex" justifyContent="center" alignItems="center" minH="50vh" >
+          <Spinner size="xl" color="white" />
+        </Box>
+    );
+  }
 
     return (
  <div>
@@ -24,7 +34,7 @@ function UserRoutes({ currentUser }) {
    
    <section>
      <Routes>
-     {/* Conditional root route - Search if logged in, redirect to login if not */}
+     {/* Conditional root route - Search if logged in, redirect to login if logged out */}
        <Route 
          path="/" 
          element={currentUser ? <SearchPage /> : <Navigate to="/login" replace />} 

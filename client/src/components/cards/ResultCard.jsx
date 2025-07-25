@@ -18,7 +18,7 @@ const ResultCard = ({ title, subtitle, image, url }) => {
       _hover={{ boxShadow: "md" }}
     >
       {/* Image or Image Placeholder */}
-      {/* If there is an image */}
+      {/* If there is an image show image*/}
       <Box height={0} pb="100%" position="relative">
         {image ? (
           <Box
@@ -45,22 +45,23 @@ const ResultCard = ({ title, subtitle, image, url }) => {
             alignItems="center"
             justifyContent="center"
           >
+            {/* Music Note Icon */}
             <Icon as={FaMusic} w={12} h={12} color="gray.500" />
           </Box>
         )}
       </Box>
 
       {/* Text Content */}
-      <Box p={2}>
+      <Box p={2} bgColor="black">
         {/* Title */}
-        <Text fontWeight="bold" isTruncated>
+        <Text fontWeight="bold"   isTruncated>
           {title}
         </Text>
         {/* Subtitle */}
         {/* If subtitle is provided, display it */}
         {/* Using isTruncated to handle long subtitles gracefully */}
         {subtitle && (
-          <Text fontSize="sm" color="gray.600" isTruncated>
+          <Text fontSize=".8rem" color="#ffffff"  p={2} isTruncated>
             {subtitle}
           </Text>
         )}

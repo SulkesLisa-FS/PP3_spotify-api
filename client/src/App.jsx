@@ -15,7 +15,7 @@ import AuthServices from "./services/auth.service";
 
 function App() {
   // State Variables
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(undefined);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
    const location = useLocation();
    const navigate = useNavigate();
@@ -39,25 +39,25 @@ useEffect(() => {
     // Use replace to avoid adding to history stack
     navigate("/", { replace: true });
   }
-}, [location, setCurrentUser, navigate]);
+  // Run when location.search changes (OAuth redirect from Spotify)
+  // This sets the user as logged in when returning from Spotify
+}, [location.search, navigate]);
 
 
 
 // On mount, check for user in localStorage 
 useEffect(() => {
-  // If currentUser is null, check localStorage for user data
-  if (currentUser === null) {
-    // Get user data from localStorage (already validated by getCurrentUser)
-    const user = AuthServices.getCurrentUser();
-    // If user data exists, set it in state
-    if (user) {
-      setCurrentUser(user);
-    } else {
-      // If no user data, set currentUser to false
-      setCurrentUser(false);
-    }
+  // Get user data from localStorage (already validated by getCurrentUser)
+  const user = AuthServices.getCurrentUser();
+  // If user data exists, set it in state
+  if (user) {
+    setCurrentUser(user);
+  } else {
+    // If no user data, set currentUser to false
+    setCurrentUser(false);
   }
-}, [currentUser]);
+  // Empty dependency array - only run once on mount
+}, []); 
 
 
 
