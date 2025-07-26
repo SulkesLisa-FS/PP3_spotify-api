@@ -58,7 +58,7 @@ function Search() {
       // Handle the response
       .then(({ data }) => {
         // Check data in the console
-        console.log("Search results:", data);
+        // console.log("Search results:", data);
         // Update results state with the new data
         setResults(data);
       })
