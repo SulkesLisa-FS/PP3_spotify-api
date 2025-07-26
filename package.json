@@ -16,8 +16,8 @@
         "server": "cd server && nodemon server.js"
     },
     "dependencies": {
-        "concurrently": "^9.2.0",
-        "nodemon": "^3.1.10"
+        "concurrently": "^9.2.0"
+        
     }
 }
 
