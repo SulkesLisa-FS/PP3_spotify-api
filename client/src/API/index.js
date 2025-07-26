@@ -27,7 +27,7 @@ const API = Object.create(null);
 
 
 // Search object
-API.search = async ({ q, type = "track" , limit = 10 }) => { 
+API.search = async ({ q, type = "artist,album,track", limit = 10 }) => { 
   
   // Construct the URL for the search API endpoint
   // Use encodeURIComponent to safely encode the query parameter
