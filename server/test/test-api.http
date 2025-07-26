@@ -1,0 +1,53 @@
+### Variables
+@baseUrl = http://localhost:3000/api/v1
+@spotifyUserId = Your-Spotify-ID
+
+### _____ Basic Working Search Test _____
+
+### Auth Login - Navigate to this in browser to authenticate
+GET {{baseUrl}}/auth/login
+
+### Basic Search - Should return Spotify results
+GET {{baseUrl}}/spotify/search?q=taylor%20swift
+Authorization: Bearer {{spotifyUserId}}
+
+
+### Search Artists 
+GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist&limit=5
+Authorization: Bearer {{spotifyUserId}}
+
+### Search Albums 
+GET {{baseUrl}}/spotify/search?q=1989&type=album&limit=5
+Authorization: Bearer {{spotifyUserId}}
+
+### Search with All Parameters
+GET {{baseUrl}}/spotify/search?q=brian%20adams&type=artist,album,track&limit=10&offset=0
+Authorization: Bearer {{spotifyUserId}}
+
+
+
+
+### _____ Basic Failing  Test _____
+
+### Missing Query Parameter / Status 400
+GET {{baseUrl}}/spotify/search
+Authorization: Bearer {{spotifyUserId}}
+
+### Empty Query Parameter  / Status 400
+GET {{baseUrl}}/spotify/search?q=
+Authorization: Bearer {{spotifyUserId}}
+
+### Missing Authorization Header  / Status 401
+GET {{baseUrl}}/spotify/search?q=test
+
+### Invalid Authorization Token  / Status 401
+GET {{baseUrl}}/spotify/search?q=test
+Authorization: Bearer invalid_token_here
+
+### Invalid Search Type 
+GET {{baseUrl}}/spotify/search?q=test&type=invalid_type
+Authorization: Bearer {{spotifyUserId}}
+
+### Special Characters in Query 
+GET {{baseUrl}}/spotify/search?q=caf%C3%A9%20music%20%26%20more
+Authorization: Bearer {{spotifyUserId}}

@@ -38,7 +38,7 @@ const callbackController = async (req, res) => {
     }
 
     // Extract access token and expiration from the response
-    const { access_token, expires_in } = tokenResult.data;
+    const { access_token, refresh_token, expires_in } = tokenResult.data;
 
     // Get user profile using Spotify service
     const profileResult = await spotifyService.getUserProfile(access_token);
@@ -65,23 +65,24 @@ const callbackController = async (req, res) => {
       user = new User({
         spotifyId: spotifyUser.id,
         accessToken: access_token,
+        refreshToken: refresh_token,
         tokenExpires: tokenExpires,
-        createdAt: new Date(),
-        updatedAt: new Date(),
       });
     } else {
       // Else, Update existing user
       user.accessToken = access_token;
+      user.refreshToken = refresh_token;
       user.tokenExpires = tokenExpires;
-      user.updatedAt = new Date();
     }
 
     // Save the user to the database
     await user.save();
     console.log("User saved/updated successfully:", user);
 
-    // Redirect authenticated user to home page to begin searching for queries.
-    res.redirect(home);
+   // Redirect authenticated user to home page to begin searching for queries.
+    // res.redirect(home);
+    // Redirect authenticated user to home page with access token and the spotify ID for localstorage
+    res.redirect(`${home}?accessToken=${access_token}&spotifyId=${spotifyUser.id}`);
   } catch (error) {
     console.error("Error during Spotify callback:", error);
     // if not authenticated - redirect to login page with error
