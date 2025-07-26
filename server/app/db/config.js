@@ -1,13 +1,15 @@
 // Import the mongoose module
 const mongoose = require("mongoose");
 
-const connectDB = async () => {
+const connectDB = async (mongoURI) => {
   try {
+    // use the mongoURI passed as an argument from server.js callback
+
     // Connect to the MongoDB database using Mongoose
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    const conn = await mongoose.connect(mongoURI);
 
     // Log the successful connection to the console
-    console.log(`Connected to MongoDB successfully: ${conn.connection.host}`);
+    console.log(`Connected to MongoDB successfully`);
   } catch (error) {
     console.error("MongoDB connection error:", error.message);
   }

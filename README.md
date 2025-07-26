@@ -32,6 +32,10 @@ This is a Spotify Web API application that allows users to search for artists, a
   - Safari v18 or later
   - Microsoft Edge (Chromium-based)
 
+# Important!
+
+**To use the app, please send me the email address you use to log into Spotify via FSO. I’ll add it to my Spotify Developer Dashboard so you're authorized to test the app.**
+
 <br>
 
 # Getting Started:
@@ -40,30 +44,37 @@ This is a Spotify Web API application that allows users to search for artists, a
 
 🔸 Make sure your MongoDB is up and running
 
-🔸 Cd into the pp3_spotify-api directory <br>
+🔸 Cd into the server directory <br>
 
-🔸 Revert the .env.dist file into a .env file and add your values.
-
-**Module One Note: Will set up localhost and MongoDB variables**
+🔸 Revert the .env.dist file into a .env file and add your values and keys.
 
 The .env file should look something like this
 
 ```
-# localhost
+# Environment
+NODE_ENV=development
+ENV_DEV=http://localhost:3000/api/v1/
+
+# Server Configuration
 PORT=3000
 
-# MongoDB
-MONGODB_URI = mongodb://127.0.0.1:27017/Spotify-api
+# MongoDB - Development
+MONGODB_DEV=mongodb://localhost:27017/spotify-app
 
-# Spotify API
-SPOTIFY_API_KEY=your_api_key
+# Spotify API Credentials
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=http://localhost:3000/api/v1/auth/callback
 ```
 
-- Add your own Spotify API key
+<br>
+
 
 ## Install
 
     npm install
+
+
 
 ## Run
 
@@ -71,19 +82,17 @@ SPOTIFY_API_KEY=your_api_key
 
 <br>
 
-# Next:
-
-🔸 Cd into the client directory <br>
+🔸 **Cd into the client directory** <br>
 
 ## Install
 
     npm install
 
-<br>
 
-## Run the Application:
 
-    npm start
+## Run
+
+    npm run dev
 
 <br>
 
@@ -97,20 +106,37 @@ SPOTIFY_API_KEY=your_api_key
 
 ### Local Development:
 
-- **Server**: `http://localhost:3000`
+- **Server**: `http://localhost:3000/api/v1/`
+- **client**: `http://localhost:3001/`
 - **Database**: `mongodb://localhost:27017/spotify-app`
 
-### Planned API Endpoints:
+### Authentication Endpoints:
 
-- `/auth/login` - Spotify login
-- `/api/spotify/search/artist/:query` - Search artists
-- `/api/spotify/search/album/:query` - Search albums
-- `/api/spotify/search/track/:query` - Search tracks
+- `/api/v1/auth/login` - Spotify login
+- `/api/v1/auth/callback` - Spotify OAuth callback
+- `/api/v1/auth/logout` - User logout
 
-### External:
+### API Endpoints:
 
-- **Spotify API**: `https://api.spotify.com/v1/`
-- **Spotify Dashboard**: `https://developer.spotify.com/dashboard`
+- `/api/v1/spotify/search?q={query}&type={type}&limit={limit}` - Search artists, albums, and tracks
+
+
+### Client Endpoints:
+
+- `/login` - Login Page
+- `/` - Root Search Page
+- `/contactUs` - Contact Us Page
+
+### TEST Endpoints:
+
+- Server:
+
+* `http://localhost:3000/api/v1/auth/login`
+
+- Client:
+
+* `http://localhost:3001/login`
+* `http://localhost:3001/`
 
 <br>
 <br>
@@ -130,3 +156,7 @@ Express:
 MongoDB: `https://www.mongodb.com/docs/manual/introduction/`
 
 Markdown Checkboxes VScode extension by Matt Bierner: `bierner.markdown-checkbox`
+
+Spotify for Developers: `https://developer.spotify.com/documentation/web-api`
+
+Module 2 & 3 SCRUM Meeting on FSO

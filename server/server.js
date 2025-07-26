@@ -1,14 +1,17 @@
+// Importing the environment variable configuration FIRST
+require("dotenv").config();
+
 // Importing the express module
 const app = require("./app");
 
-// Importing the environment variable configuration
-require("dotenv").config();
+// Import the environment configuration
+const envConfig = require("./app/config/envConfig");
 
 // Import the database
 const connectDB = require("./app/db/config");
 
 // Run the database (MongoDB) asynchronous function
-connectDB();
+connectDB(envConfig.mongoURI);
 
 //  Port Variable from .env file
 const PORT = process.env.PORT || 3000;
