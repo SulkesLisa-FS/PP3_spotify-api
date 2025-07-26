@@ -2,7 +2,6 @@
 import { Box, Text, Icon } from "@chakra-ui/react";
 import { FaMusic } from "react-icons/fa";
 
-
 // Passing props for title, subtitle, image, and url
 const ResultCard = ({ title, subtitle, image, url }) => {
   return (
@@ -11,7 +10,7 @@ const ResultCard = ({ title, subtitle, image, url }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Link to Open ${title} ${subtitle} on Spotify` }
+      aria-label={`Link to Open ${title} ${subtitle} on Spotify`}
       bg="white"
       borderRadius="md"
       overflow="hidden"
@@ -19,7 +18,7 @@ const ResultCard = ({ title, subtitle, image, url }) => {
       _hover={{ boxShadow: "md" }}
       _focus={{
         outline: "2px solid #1DB954",
-        outlineOffset: "2px"
+        outlineOffset: "2px",
       }}
     >
       {/* Image or Image Placeholder */}
@@ -38,7 +37,7 @@ const ResultCard = ({ title, subtitle, image, url }) => {
             objectFit="cover"
           />
         ) : (
-            // else if no image, show a placeholder icon
+          // else if no image, show a placeholder icon
           <Box
             position="absolute"
             top={0}
@@ -59,19 +58,19 @@ const ResultCard = ({ title, subtitle, image, url }) => {
       {/* Text Content */}
       <Box p={2} bgColor="black">
         {/* Title */}
-        <Text fontWeight="bold"   isTruncated>
+        <Text fontWeight="bold" isTruncated>
           {title}
         </Text>
         {/* Subtitle */}
         {/* If subtitle is provided, display it */}
         {/* Using isTruncated to handle long subtitles gracefully */}
         {subtitle && (
-          <Text fontSize=".8rem" color="#ffffff"  p={2} isTruncated>
+          <Text fontSize=".8rem" color="#ffffff" p={2} isTruncated>
             {subtitle}
           </Text>
         )}
       </Box>
     </Box>
   );
-}
+};
 export default ResultCard;

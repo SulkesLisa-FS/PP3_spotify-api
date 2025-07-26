@@ -22,13 +22,9 @@ const CardLoggin = () => {
         width="230px"
         display="block"
       />
-      
+
       {/* CTA - H3 */}
-      <Text
-        color="#FFFFFF"
-        fontSize="1.3rem"
-        textAlign="center"
-      >
+      <Text color="#FFFFFF" fontSize="1.3rem" textAlign="center">
         Please login to continue!
       </Text>
 

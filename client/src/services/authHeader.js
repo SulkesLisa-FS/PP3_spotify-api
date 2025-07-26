@@ -3,14 +3,10 @@ function authHeader() {
   // Check for both accessToken and spotifyId, use spotifyId for Bearer auth
   if (user && user.accessToken && user.spotifyId) {
     // Use spotifyId for server user lookup
-    return { Authorization: `Bearer ${user.spotifyId}` };   
-  } 
-  else {
+    return { Authorization: `Bearer ${user.spotifyId}` };
+  } else {
     return {};
   }
 }
 
 export default authHeader;
-
-
-

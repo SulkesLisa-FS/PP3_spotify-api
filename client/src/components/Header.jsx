@@ -1,7 +1,7 @@
-// Import Components 
+// Import Components
 import spotifyLogo from "../assets/Spotify_Full_Logo_RGB_Black.png";
 // Import Libraries
-import { Box, Flex, Text, Image, Link } from "@chakra-ui/react"
+import { Box, Flex, Text, Image, Link } from "@chakra-ui/react";
 
 //Spotify Sign Up URL
 const SPOTIFY_SIGNUP_URL = "https://www.spotify.com/signup";
@@ -9,15 +9,18 @@ const SPOTIFY_SIGNUP_URL = "https://www.spotify.com/signup";
 function Header({ currentUser, isLoggingOut, onLogout }) {
   return (
     // Page Container
-    <Box as="header"
+    <Box
+      as="header"
       role="banner"
       aria-label="Page Header"
       borderBottom="8px solid #378d41a9"
-      //boxShadow="5px 2px 1px #1ed75fc2"
-      bg="#1ED760" 
+      bg="#1ED760"
       color="#121212"
-       p={4} mb={4} 
-      w="100%" position="relative">
+      p={4}
+      mb={4}
+      w="100%"
+      position="relative"
+    >
       <Flex
         align="center"
         justify="space-between"
@@ -38,7 +41,7 @@ function Header({ currentUser, isLoggingOut, onLogout }) {
 
         {/* Center Container - App Title */}
         <Text
-        as="h1"
+          as="h1"
           fontWeight="600"
           letterSpacing="wide"
           position="absolute"
@@ -51,35 +54,40 @@ function Header({ currentUser, isLoggingOut, onLogout }) {
         </Text>
 
         {/* Right Container - Current User Check For Sign Up or Logout */}
-        <Box as="nav" aria-label="User account navigation" minW="100px" textAlign="right" >
+        <Box
+          as="nav"
+          aria-label="User account navigation"
+          minW="100px"
+          textAlign="right"
+        >
           {/* If no user AND not logging out - Show Sign Up link */}
           {!currentUser && !isLoggingOut ? (
-          <Link
-            aria-label="Sign up for Spotify account"
-            href={SPOTIFY_SIGNUP_URL}
-            isExternal
-            color="#121212"
-            textDecoration="none"
-            fontWeight="600"
-            fontSize="2rem"
-          >
-            Sign Up
-          </Link>
+            <Link
+              aria-label="Sign up for Spotify account"
+              href={SPOTIFY_SIGNUP_URL}
+              isExternal
+              color="#121212"
+              textDecoration="none"
+              fontWeight="600"
+              fontSize="2rem"
+            >
+              Sign Up
+            </Link>
           ) : (
             // Else - show logout link
-            // If the user clicks Logout, call the logout method 
-              <Link
-               role="button"
-                onClick={onLogout}
-                color="#121212"
-                textDecoration="none"
-                fontWeight="600"
-                fontSize="2rem"
-                cursor="pointer"
-              >
-                {/* Check if user is LoggingOut */}
+            // If the user clicks Logout, call the logout method
+            <Link
+              role="button"
+              onClick={onLogout}
+              color="#121212"
+              textDecoration="none"
+              fontWeight="600"
+              fontSize="2rem"
+              cursor="pointer"
+            >
+              {/* Check if user is LoggingOut */}
               {isLoggingOut ? "Logging out..." : "Logout"}
-              </Link>
+            </Link>
           )}
         </Box>
       </Flex>
