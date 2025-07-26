@@ -79,8 +79,10 @@ const callbackController = async (req, res) => {
     await user.save();
     console.log("User saved/updated successfully:", user);
 
-    // Redirect authenticated user to home page to begin searching for queries.
-    res.redirect(home);
+   // Redirect authenticated user to home page to begin searching for queries.
+    // res.redirect(home);
+    // Redirect authenticated user to home page with access token and the spotify ID for localstorage
+    res.redirect(`${home}?accessToken=${access_token}&spotifyId=${spotifyUser.id}`);
   } catch (error) {
     console.error("Error during Spotify callback:", error);
     // if not authenticated - redirect to login page with error

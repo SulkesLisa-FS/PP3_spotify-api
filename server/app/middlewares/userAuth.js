@@ -9,30 +9,30 @@ const spotifyService = require("../services/spotifyService");
 
 // /Middleware  that validates Spotify OAuth tokens and refreshes tokens before accessing protected routes
 
-//  Extract the user Id from the Authorization header
+//  Extract the Spotify ID from the Authorization header
 const getSpotifyId = (authHeader) => {
   // Check if header exists and follows Bearer token format
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
-  // Extract everything after "Bearer
+  // Extract everything after "Bearer "
   return authHeader.substring(7);
 };
 
 // Middleware function to authenticate user using Spotify OAuth
 const userAuth = async (req, res, next) => {
   try {
-    // GET the spotify Id from Authorization header
+    // GET the Spotify ID from Authorization header
     const spotifyId = getSpotifyId(req.headers.authorization);
-    // If no Id is provided, return 401 Unauthorized
+    // If no ID is provided, return 401 Unauthorized
     if (!spotifyId) {
       return res.status(401).json({
         success: false,
-        error: "Authorization header required: Bearer {spotifyUserId}",
+        error: "Authorization header required: Bearer {spotifyId}",
       });
     }
 
-    // Find user record in MongoDB using the Id
+    // Find user record in MongoDB using the Spotify ID
     let user = await User.findOne({ spotifyId });
     // If user not found, return 401 Unauthorized
     if (!user) {
