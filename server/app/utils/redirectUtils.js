@@ -10,10 +10,11 @@ const getRedirectUrls = () => {
       : "http://localhost:3001";
 
   // DEBUG -Check the values
-  console.error("=== REDIRECT UTILS DEBUG ===");
-  console.error("NODE_ENV:", process.env.NODE_ENV);
-  console.error("Final baseURL:", baseURL);
-  console.error("============================");
+
+  // console.error("=== REDIRECT UTILS DEBUG ===");
+  // console.error("NODE_ENV:", process.env.NODE_ENV);
+  // console.error("Final baseURL:", baseURL);
+  // console.error("============================");
   return {
     // Redirect URLs for home and login based on authentication success or failure
     home: baseURL,              

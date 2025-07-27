@@ -14,10 +14,12 @@ const loginController = async (req, res) => {
     const redirect_uri = spotifyRedirect;
     
     // DEBUG - check the values 
-    console.error("=== LOGIN CONTROLLER DEBUG ===");
-    console.error("Client ID:", client_id);
-    console.error("redirect_uri being used:", redirect_uri);
-    console.error("==============================");
+
+    // console.error("=== LOGIN CONTROLLER DEBUG ===");
+    // console.error("Client ID:", client_id);
+    // console.error("redirect_uri being used:", redirect_uri);
+    // console.error("==============================");
+    
     // Generate a random state and scope for the OAuth 
     const state = generateRandomString(16);
     // scope is a space-separated list of permissions requested from the user
