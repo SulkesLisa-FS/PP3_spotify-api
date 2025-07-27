@@ -15,6 +15,7 @@ function Login() {
       width="95%"
       maxWidth="1800px"
       m="0 auto"
+      pb={20}
       textAlign="center"
       // Image Background Styling
       backgroundImage={`url(${Background})`}
@@ -56,6 +57,7 @@ function Login() {
         justifyContent="center"
         spacing={5}
         p={10}
+        mb={20}
         borderRadius="xl"
         minW="35rem"
         bg="#121212"
