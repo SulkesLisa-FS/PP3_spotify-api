@@ -140,6 +140,10 @@ SPOTIFY_REDIRECT_URI=http://localhost:3000/api/v1/auth/callback
 
 <br>
 <br>
+### Branches:
+- main -> deployment
+- main -> staging -> dev 
+<br>
 
 ## Resources:
 
