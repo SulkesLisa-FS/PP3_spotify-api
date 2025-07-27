@@ -6,7 +6,7 @@ const getRedirectUrls = () => {
   // In Dev: use dynamic client port or default to 3001, in production use domain
   const baseURL =
     process.env.NODE_ENV === "production"
-       ? envConfig.baseURL
+       ? "https://pp3-demo-app-215665657891.herokuapp.com"
       : `http://localhost:${process.env.CLIENT_PORT || 3001}`;
 
   return {
