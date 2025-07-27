@@ -13,11 +13,9 @@ const loginController = async (req, res) => {
     const client_id = spotifyClientId;
     const redirect_uri = spotifyRedirect;
     
-    // DEBUG - Check what values we're getting
+    // DEBUG - check the values 
     console.error("=== LOGIN CONTROLLER DEBUG ===");
-    console.error("NODE_ENV:", process.env.NODE_ENV);
-    console.error("process.env.SPOTIFY_REDIRECT:", process.env.SPOTIFY_REDIRECT);
-    console.error("spotifyRedirect from config:", spotifyRedirect);
+    console.error("Client ID:", client_id);
     console.error("redirect_uri being used:", redirect_uri);
     console.error("==============================");
     

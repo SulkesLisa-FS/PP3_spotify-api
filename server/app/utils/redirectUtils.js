@@ -7,7 +7,13 @@ const getRedirectUrls = () => {
   const baseURL =
     process.env.NODE_ENV === "production"
        ? "https://pp3-demo-app-215665657891.herokuapp.com"
-      : `http://localhost:${process.env.CLIENT_PORT || 3001}`;
+      : "http://localhost:3001";
+
+  // DEBUG -Check the values
+  console.error("=== REDIRECT UTILS DEBUG ===");
+  console.error("NODE_ENV:", process.env.NODE_ENV);
+  console.error("Final baseURL:", baseURL);
+  console.error("============================");
 
   return {
     // Redirect URLs for home and login based on authentication success or failure
