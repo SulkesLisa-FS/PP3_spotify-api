@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // Production API Base URL
-// const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1";
 
 // Development API Base URL
-const BASE_URL = "http://localhost:3000/api/v1";
+//const BASE_URL = "http://localhost:3000/api/v1";
 
 // Authentication URL to API
 const API_URL = "/auth";
