@@ -13,13 +13,6 @@ const loginController = async (req, res) => {
     const client_id = spotifyClientId;
     const redirect_uri = spotifyRedirect;
     
-    // DEBUG - Remove after testing
-    console.error("=== LOGIN DEBUG ===");
-    console.error("process.env.SPOTIFY_REDIRECT:", process.env.SPOTIFY_REDIRECT);
-    console.error("spotifyRedirect from config:", spotifyRedirect);
-    console.error("redirect_uri variable:", redirect_uri);
-    console.error("==================");
-    
     // Generate a random state and scope for the OAuth 
     const state = generateRandomString(16);
     // scope is a space-separated list of permissions requested from the user
