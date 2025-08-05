@@ -64,6 +64,7 @@ function ContactForm() {
       );
       // Redirect to mailto link with subject and body
       window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`; 
+
     }
   };
 
