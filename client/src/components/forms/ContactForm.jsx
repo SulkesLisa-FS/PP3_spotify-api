@@ -12,7 +12,10 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-function ContactForm() {
+  // Email Variable
+  function ContactForm() {
+    const EMAIL = import.meta.env.VITE_EMAIL;
+  
   // State Variables
   const [errors, setErrors] = useState({});
   // Form Values
@@ -60,7 +63,7 @@ function ContactForm() {
         `${values.message}\n\nFrom: ${values.name} (${values.email})`
       );
       // Redirect to mailto link with subject and body
-      window.location.href = `mailto:mpattlee@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
     }
   };
 
