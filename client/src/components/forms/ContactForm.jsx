@@ -22,6 +22,9 @@ function ContactForm() {
     message: "",
   });
 
+  // Email from environment variables 
+  const EMAIL = import.meta.env.VITE_EMAIL; 
+
   // Email Validation with Regex
   const validateEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
 
@@ -60,7 +63,7 @@ function ContactForm() {
         `${values.message}\n\nFrom: ${values.name} (${values.email})`
       );
       // Redirect to mailto link with subject and body
-      window.location.href = `mailto:fakemail@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`; 
     }
   };
 
